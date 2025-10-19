@@ -15,7 +15,7 @@ export default function Home() {
       highlight: '7/24',
       description: 'Uyum Sağlar..',
       buttonText: 'ALIŞVERİŞE BAŞLA',
-      image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&h=600&fit=crop',
+      image: '/images/bg-1.jpg',
       textPosition: 'left',
     },
     {
@@ -25,7 +25,7 @@ export default function Home() {
       highlight: 'Özel',
       description: 'Tasarımlar..',
       buttonText: 'ALIŞVERİŞE BAŞLA',
-      image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1200&h=600&fit=crop',
+      image: '/images/bg-2.jpg',
       textPosition: 'right',
     },
   ];

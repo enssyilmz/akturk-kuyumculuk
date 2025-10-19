@@ -25,6 +25,7 @@ export default function EditProduct() {
     category: 'yüzük',
   });
   const [imageUrl, setImageUrl] = useState<string>('');
+  const [imageUrl2, setImageUrl2] = useState<string>('');
   const [collectionName, setCollectionName] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [fetchLoading, setFetchLoading] = useState(true);
@@ -61,6 +62,7 @@ export default function EditProduct() {
             description: data.description || '',
           });
           setImageUrl(data.image || '');
+          setImageUrl2(data.image2 || '');
         } else {
           setMessage({ type: 'error', text: 'Ürün bulunamadı!' });
         }
@@ -87,14 +89,24 @@ export default function EditProduct() {
 
   const handleImageUpload = (result: any) => {
     setImageUrl(result.info.secure_url);
-    setMessage({ type: 'success', text: 'Görsel başarıyla yüklendi!' });
+    setMessage({ type: 'success', text: 'İlk görsel başarıyla yüklendi!' });
+  };
+
+  const handleImageUpload2 = (result: any) => {
+    setImageUrl2(result.info.secure_url);
+    setMessage({ type: 'success', text: 'İkinci görsel başarıyla yüklendi!' });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!imageUrl) {
-      setMessage({ type: 'error', text: 'Lütfen bir ürün görseli yükleyin!' });
+      setMessage({ type: 'error', text: 'Lütfen birinci ürün görselini yükleyin!' });
+      return;
+    }
+
+    if (!imageUrl2) {
+      setMessage({ type: 'error', text: 'Lütfen ikinci ürün görselini yükleyin!' });
       return;
     }
 
@@ -112,6 +124,7 @@ export default function EditProduct() {
         name: formData.name,
         category: formData.category,
         image: imageUrl,
+        image2: imageUrl2,
         updatedAt: Timestamp.now(),
       };
 
@@ -172,47 +185,93 @@ export default function EditProduct() {
             <p className="text-brand-medium-gray mt-1">Ürün bilgilerini güncelleyin</p>
           </div>
 
-          {/* Görsel Yükleme */}
-          <div>
-            <label className="block text-sm font-semibold text-brand-black mb-2">
-              Ürün Görseli *
-            </label>
-            <div className="flex items-start space-x-4">
-              <CldUploadWidget
-                uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
-                onSuccess={handleImageUpload}
-              >
-                {({ open }) => (
-                  <button
-                    type="button"
-                    onClick={() => open()}
-                    className="px-6 py-3 btn-primary"
-                  >
-                    Görsel Değiştir
-                  </button>
+          {/* Görseller - Yan Yana */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Görsel 1 */}
+            <div>
+              <label className="block text-sm font-semibold text-brand-black mb-2">
+                1. Ürün Görseli (Ana Görsel) *
+              </label>
+              <div className="flex flex-col items-start space-y-3">
+                <CldUploadWidget
+                  uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+                  onSuccess={handleImageUpload}
+                >
+                  {({ open }) => (
+                    <button
+                      type="button"
+                      onClick={() => open()}
+                      className="px-6 py-3 btn-primary w-full"
+                    >
+                      1. Görseli Değiştir
+                    </button>
+                  )}
+                </CldUploadWidget>
+                
+                {imageUrl && (
+                  <div className="relative w-full">
+                    <img
+                      src={imageUrl}
+                      alt="Preview 1"
+                      className="w-full h-48 object-cover rounded-lg border-4 border-brand-gold shadow-lg"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setImageUrl('')}
+                      className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-red-700 shadow-lg font-bold"
+                    >
+                      ×
+                    </button>
+                  </div>
                 )}
-              </CldUploadWidget>
-              
-              {imageUrl && (
-                <div className="relative">
-                  <img
-                    src={imageUrl}
-                    alt="Preview"
-                    className="w-32 h-32 object-cover rounded-lg border-4 border-brand-gold shadow-lg"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setImageUrl('')}
-                    className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-red-700 shadow-lg font-bold"
-                  >
-                    ×
-                  </button>
-                </div>
-              )}
+                {imageUrl && (
+                  <p className="text-sm text-green-600 font-medium">✓ 1. Görsel yüklendi</p>
+                )}
+              </div>
             </div>
-            {imageUrl && (
-              <p className="text-sm text-green-600 mt-2 font-medium">✓ Görsel yüklendi</p>
-            )}
+
+            {/* Görsel 2 */}
+            <div>
+              <label className="block text-sm font-semibold text-brand-black mb-2">
+                2. Ürün Görseli (Hover Görseli) *
+              </label>
+              <div className="flex flex-col items-start space-y-3">
+                <CldUploadWidget
+                  uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+                  onSuccess={handleImageUpload2}
+                >
+                  {({ open }) => (
+                    <button
+                      type="button"
+                      onClick={() => open()}
+                      className="px-6 py-3 btn-primary w-full"
+                    >
+                      2. Görseli Değiştir
+                    </button>
+                  )}
+                </CldUploadWidget>
+                
+                {imageUrl2 && (
+                  <div className="relative w-full">
+                    <img
+                      src={imageUrl2}
+                      alt="Preview 2"
+                      className="w-full h-48 object-cover rounded-lg border-4 border-brand-gold shadow-lg"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setImageUrl2('')}
+                      className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-red-700 shadow-lg font-bold"
+                    >
+                      ×
+                    </button>
+                  </div>
+                )}
+                {imageUrl2 && (
+                  <p className="text-sm text-green-600 font-medium">✓ 2. Görsel yüklendi</p>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Grid İki Sütun */}

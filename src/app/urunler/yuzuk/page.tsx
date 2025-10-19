@@ -1,104 +1,138 @@
-'use client';
+'use client'
+import { useEffect, useState } from 'react'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '@/lib/firebase'
+import Link from 'next/link'
 
-import { useEffect, useState } from 'react';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
-import Image from 'next/image';
+type SortOption = 'recommended' | 'name-asc' | 'name-desc';
 
 interface Product {
-  id: string;
-  name: string;
-  image: string;
-  category: string;
-  description?: string;
+  id: string
+  name: string
+  price: number
+  image: string
+  image2?: string
+  description?: string
+  category: string
 }
 
 export default function YuzukPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [products, yuzukProducts] = useState<Product[]>([])
+  const [sortedProducts, yuzukSortedProducts] = useState<Product[]>([])
+  const [loading, yuzukLoading] = useState(true)
+  const [sortBy, yuzukSortBy] = useState<SortOption>('recommended')
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const q = query(collection(db, 'yuzuk'), orderBy('createdAt', 'desc'));
-        const querySnapshot = await getDocs(q);
-        const productsData = querySnapshot.docs.map((doc) => ({
+        const querySnapshot = await getDocs(collection(db, 'yuzuk'))
+        const productsData = querySnapshot.docs.map(doc => ({
           id: doc.id,
-          ...doc.data(),
-        })) as Product[];
-        setProducts(productsData);
+          ...doc.data()
+        })) as Product[]
+        yuzukProducts(productsData)
+        yuzukSortedProducts(productsData)
       } catch (error) {
-        console.error('Ürünler yüklenirken hata:', error);
+        console.error('Ürünler yüklenirken hata:', error)
       } finally {
-        setLoading(false);
+        yuzukLoading(false)
       }
-    };
+    }
 
-    fetchProducts();
-  }, []);
+    fetchProducts()
+  }, [])
+
+  useEffect(() => {
+    let sorted = [...products];
+    
+    switch (sortBy) {
+      case 'name-asc':
+        sorted.sort((a, b) => a.name.localeCompare(b.name, 'tr'));
+        break;
+      case 'name-desc':
+        sorted.sort((a, b) => b.name.localeCompare(a.name, 'tr'));
+        break;
+      case 'recommended':
+      default:
+        sorted = products;
+        break;
+    }
+
+    yuzukSortedProducts(sorted);
+  }, [sortBy, products]);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-brand-dark-gray flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-brand-gold mx-auto"></div>
-          <p className="mt-4 text-brand-light-gray font-medium">Yükleniyor...</p>
-        </div>
+      <div className="min-h-screen bg-brand-black flex items-center justify-center">
+        <div className="text-brand-gold text-xl">Yükleniyor...</div>
       </div>
-    );
+    )
   }
 
   return (
-    <div className="min-h-screen bg-brand-dark-gray py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Başlık */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-brand-light-gray mb-4">
-            Yüzük Koleksiyonu
-          </h1>
-          <div className="w-32 h-1 bg-brand-gold mx-auto rounded-full"></div>
+    <div className="min-h-screen bg-brand-black">
+      <div className="container mx-auto px-4 pt-4 pb-12">
+        <h1 className="text-4xl font-bold text-brand-gold text-center">YÜZÜK</h1>
+        <div className="flex items-center justify-end mb-8">          
+          <div className="flex items-center gap-2">
+            <label htmlFor="sort" className="text-brand-light-gray">Sırala:</label>
+            <select
+              id="sort"
+              value={sortBy}
+              onChange={(e) => yuzukSortBy(e.target.value as SortOption)}
+              className="bg-brand-dark-gray text-brand-light-gray border border-brand-gold px-4 py-2 focus:outline-none"
+            >
+              <option value="recommended">Önerilen</option>
+              <option value="name-asc">İsme Göre (A-Z)</option>
+              <option value="name-desc">İsme Göre (Z-A)</option>
+            </select>
+          </div>
         </div>
 
-        {/* Ürün Grid */}
-        {products.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-brand-medium-gray text-xl">
-              Bu kategoride henüz ürün bulunmamaktadır.
-            </p>
+        {sortedProducts.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-brand-light-gray text-lg">Henüz ürün bulunmamaktadır.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product) => (
-              <div
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-8">
+            {sortedProducts.map((product) => (
+              <Link 
                 key={product.id}
-                className="bg-brand-black rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-brand-medium-gray hover:border-brand-gold group"
+                href={`/urunler/yuzuk/${product.id}`}
+                className="bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer group transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50" 
               >
-                {/* Ürün Görseli */}
-                <div className="relative h-64 bg-white overflow-hidden">
-                  <Image
+                <div className="relative h-100 overflow-hidden">
+                  <img
                     src={product.image}
                     alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
                   />
+                  {product.image2 && (
+                    <img
+                      src={product.image2}
+                      alt={`${product.name} - 2`}
+                      className="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    />
+                  )}
                 </div>
-
-                {/* Ürün Bilgileri */}
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-brand-light-gray mb-2 line-clamp-2 min-h-[56px]">
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-brand-gold text-center">
                     {product.name}
                   </h3>
                   {product.description && (
-                    <p className="text-sm text-brand-medium-gray line-clamp-3">
+                    <p className="text-brand-light-gray text-center">
                       {product.description}
                     </p>
                   )}
+                  <p className="text-2xl font-bold text-brand-gold">
+                    {product.price}
+                  </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}
       </div>
     </div>
-  );
+  )
 }

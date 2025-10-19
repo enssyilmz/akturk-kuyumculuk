@@ -14,6 +14,7 @@ interface Product {
   id: string;
   name: string;
   image: string;
+  image2?: string;
   category?: string;
   description?: string;
   collectionName?: string;
