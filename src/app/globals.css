@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Aktürk Kuyumculuk Renk Paleti */
+  --color-black: #000000;
+  --color-dark-gray: #3E3E3E;
+  --color-medium-gray: #7C7C7C;
+  --color-light-gray: #C0C0C0;
+  --color-lighter-gray: #C6C6C6;
+  --color-gold: #AB8C4E;
+  
+  /* Alias isimleri */
+  --color-primary: #AB8C4E;        /* Altın rengi */
+  --color-secondary: #3E3E3E;      /* Koyu gri */
+  --color-text-dark: #000000;      /* Siyah */
+  --color-text-medium: #3E3E3E;    /* Koyu gri */
+  --color-text-light: #7C7C7C;     /* Orta gri */
+  --color-border: #C0C0C0;         /* Açık gri */
+  --color-background-gray: #C6C6C6; /* Açık gri arka plan */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Aktürk Kuyumculuk Marka Renkleri - Tailwind için */
+  --color-brand-black: #000000;
+  --color-brand-dark-gray: #3E3E3E;
+  --color-brand-medium-gray: #7C7C7C;
+  --color-brand-light-gray: #C0C0C0;
+  --color-brand-lighter-gray: #C6C6C6;
+  --color-brand-gold: #AB8C4E;
+  
+  /* Primary & Secondary */
+  --color-brand-primary: #AB8C4E;
+  --color-brand-secondary: #3E3E3E;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Aktürk Kuyumculuk - Özel Utility Class'lar */
+
+/* 
+  KULLANIM ÖRNEKLERİ:
+  
+  Text renkleri:
+  - text-brand-gold        -> Altın rengi (#AB8C4E)
+  - text-brand-black       -> Siyah (#000000)
+  - text-brand-dark-gray   -> Koyu gri (#3E3E3E)
+  - text-brand-medium-gray -> Orta gri (#7C7C7C)
+  - text-brand-light-gray  -> Açık gri (#C0C0C0)
+  
+  Arka plan renkleri:
+  - bg-brand-gold          -> Altın arka plan
+  - bg-brand-black         -> Siyah arka plan
+  - bg-brand-dark-gray     -> Koyu gri arka plan
+  - bg-brand-medium-gray   -> Orta gri arka plan
+  - bg-brand-light-gray    -> Açık gri arka plan
+  - bg-brand-lighter-gray  -> Daha açık gri arka plan (#C6C6C6)
+  
+  Border renkleri:
+  - border-brand-gold      -> Altın border
+  - border-brand-border    -> Açık gri border (#C0C0C0)
+  
+  Hover efektleri:
+  - hover:bg-brand-gold    -> Hover'da altın arka plan
+  - hover:text-brand-gold  -> Hover'da altın text
+  
+  CSS Değişkenleri:
+  - var(--color-gold)
+  - var(--color-primary)
+  - var(--color-black)
+  - var(--color-dark-gray)
+  - var(--color-medium-gray)
+  - var(--color-light-gray)
+  - var(--color-lighter-gray)
+*/
+
+.text-brand-gold {
+  color: var(--color-gold);
+}
+
+.text-brand-black {
+  color: var(--color-black);
+}
+
+.text-brand-dark-gray {
+  color: var(--color-dark-gray);
+}
+
+.text-brand-medium-gray {
+  color: var(--color-medium-gray);
+}
+
+.text-brand-light-gray {
+  color: var(--color-light-gray);
+}
+
+.bg-brand-gold {
+  background-color: var(--color-gold);
+}
+
+.bg-brand-black {
+  background-color: var(--color-black);
+}
+
+.bg-brand-dark-gray {
+  background-color: var(--color-dark-gray);
+}
+
+.bg-brand-medium-gray {
+  background-color: var(--color-medium-gray);
+}
+
+.bg-brand-light-gray {
+  background-color: var(--color-light-gray);
+}
+
+.bg-brand-lighter-gray {
+  background-color: var(--color-lighter-gray);
+}
+
+.border-brand-gold {
+  border-color: var(--color-gold);
+}
+
+.border-brand-border {
+  border-color: var(--color-border);
+}
+
+.hover\:bg-brand-gold:hover {
+  background-color: var(--color-gold);
+}
+
+.hover\:text-brand-gold:hover {
+  color: var(--color-gold);
+}
+
+/* Primary Button - Altın renkli */
+.btn-primary {
+  background-color: #AB8C4E;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #AB8C4E;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: #AB8C4E;
+  border-color: #AB8C4E;
+}
+
+/* Secondary Button - Koyu gri */
+.btn-secondary {
+  background-color: transparent;
+  color: #3E3E3E;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #3E3E3E;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-secondary:hover {
+  background-color: #3E3E3E;
+  color: #ffffff;
+  border-color: #3E3E3E;
+}
+
+/* Warning Button - Kırmızı */
+.btn-warning {
+  background-color: transparent;
+  color: #dc2626;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #dc2626;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-warning:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+
+/* Disabled state - Tüm buttonlar için */
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-warning:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
