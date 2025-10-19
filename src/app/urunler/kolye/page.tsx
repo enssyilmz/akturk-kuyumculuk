@@ -80,16 +80,15 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-brand-black">
       <div className="container mx-auto px-4 pt-4 pb-12">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-brand-gold"></h1>
-          
+        <h1 className="text-4xl font-bold text-brand-gold text-center">KOLYE</h1>
+        <div className="flex items-center justify-end mb-8">          
           <div className="flex items-center gap-2">
             <label htmlFor="sort" className="text-brand-light-gray">Sırala:</label>
             <select
               id="sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="bg-brand-dark-gray text-brand-light-gray border border-brand-gold/20 rounded-md px-4 py-2 focus:outline-none focus:border-brand-gold"
+              className="bg-brand-dark-gray text-brand-light-gray border border-brand-gold px-4 py-2 focus:outline-none"
             >
               <option value="recommended">Önerilen</option>
               <option value="name-asc">İsme Göre (A-Z)</option>
