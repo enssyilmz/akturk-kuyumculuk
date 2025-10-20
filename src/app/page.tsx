@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import FeaturedProducts from '@/components/FeaturedProducts';
 import { Award, Shield, Clock, Gem, Calculator, Package } from 'lucide-react';
@@ -95,9 +95,9 @@ export default function Home() {
       </div>
 
       {/* Özellikler Bölümü */}
-      <div className="bg-brand-black py-16">
+      <div className="bg-brand-dark-gray py-16 border-b-2 border-brand-gold shadow-2xl shadow-brand-light-gray/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          <div className="flex items-center justify-between gap-8">
             {[
               { icon: Award, title: 'Sertifikalı Ürünler' },
               { icon: Shield, title: 'Güvenli İnceleme' },
@@ -105,24 +105,28 @@ export default function Home() {
               { icon: Gem, title: 'Özel Tasarımlar' },
               { icon: Calculator, title: 'Fiyat Hesaplama' },
               { icon: Package, title: 'Mağaza Teslim' },
-            ].map((item, index) => {
+            ].map((item, index, array) => {
               const IconComponent = item.icon;
               return (
-                <div key={index} className="text-center">
-                  <div className="flex justify-center mb-3">
-                    <IconComponent className="w-10 h-10 text-brand-gold" strokeWidth={2} />
+                <React.Fragment key={index}>
+                  <div className="text-center flex-1">
+                    <div className="flex justify-center mb-3">
+                      <IconComponent className="w-10 h-10 text-brand-gold" strokeWidth={2} />
+                    </div>
+                    <p className="text-lg text-white">
+                      {item.title}
+                    </p>
                   </div>
-                  <p className="text-lg text-white">
-                    {item.title}
-                  </p>
-                </div>
+                  {/* Araya çizgi ekle, son elemandan sonra ekleme */}
+                  {index < array.length - 1 && (
+                    <div className="h-16 w-px bg-brand-gold shadow-lg shadow-brand-gold/50"></div>
+                  )}
+                </React.Fragment>
               );
             })}
           </div>
         </div>
       </div>
-
-      {/* Öne Çıkan Ürünler - Firebase'den */}
       <FeaturedProducts />
     </div>
   );
