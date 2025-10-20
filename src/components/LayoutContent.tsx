@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 
 export default function LayoutContent({
   children,
@@ -10,13 +11,20 @@ export default function LayoutContent({
 }) {
   const pathname = usePathname();
   
-  // Admin paneli ve login sayfalarında navbar gösterme
-  const hideNavbar = pathname?.startsWith('/admin') || pathname?.startsWith('/giris');
+  // Admin paneli ve login sayfalarında navbar/sidebar gösterme
+  const hideNavigation = pathname?.startsWith('/admin') || pathname?.startsWith('/giris');
 
   return (
     <>
-      {!hideNavbar && <Navbar />}
-      <main className={hideNavbar ? "" : "pt-48"}>
+      {!hideNavigation && (
+        <>
+          {/* Desktop: Navbar */}
+          <Navbar />
+          {/* Mobile: Sidebar */}
+          <Sidebar />
+        </>
+      )}
+      <main className={hideNavigation ? "" : "pt-32 lg:pt-48"}>
         {children}
       </main>
     </>

@@ -18,13 +18,13 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-brand-dark-gray border-b-2 border-brand-gold z-50 shadow-2xl shadow-brand-light-gray/50">
+    <nav className="hidden lg:block fixed top-0 left-0 right-0 bg-brand-dark-gray border-b-2 border-brand-gold z-50 shadow-2xl shadow-brand-light-gray/50">
       {/* En Üst Bar - İletişim ve Linkler */}
       <div className="bg-brand-black border-b border-brand-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             {/* Sol - Linkler */}
-            <div className="flex items-center space-x-6 text-sm">
+            <div className="flex items-center space-x-6 xl:text-lg lg:text-sm">
               <Link href="/neden-akturk-kuyumculuk" className="text-brand-light-gray hover:text-brand-gold transition-colors">
                 Neden Akturk Kuyumculuk?
               </Link>
@@ -34,7 +34,7 @@ export default function Navbar() {
             </div>
 
             {/* Sağ - İletişim */}
-            <div className="flex items-center space-x-4 text-sm">
+            <div className="flex items-center space-x-4 xl:text-lg lg:text-sm">
               <a href="tel:05312831934" className="flex items-center space-x-2 text-brand-light-gray hover:text-brand-gold transition-colors">
                 <Phone className="w-4 h-4" />
                 <span>(0531) 283 19 34</span>
@@ -55,7 +55,7 @@ export default function Navbar() {
             {/* Logo (sol) */}
             <div className="flex-1 flex justify-start">
               <Link href="/" className="flex items-center">
-                <div className="relative h-25 w-25">
+                <div className="relative xl:h-20 xl:w-20 lg:h-16 lg:w-16">
                   <Image
                     src="/images/logo-no-background.png"
                     alt="Aktürk Kuyumculuk"
@@ -69,7 +69,7 @@ export default function Navbar() {
 
             {/* Caption (ortada) */}
             <div className="flex-1 flex justify-center mt-4">
-              <div className="relative h-180 w-180">
+              <div className="relative xl:h-125 xl:w-125 lg:h-100 lg:w-100">
                 <Image
                   src="/images/caption-2.png"
                   alt="Caption"
@@ -80,22 +80,22 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Arama (sağda sabit input) */}
+            {/* Arama (sağda) */}
             <div className="flex-1 flex justify-end items-center">
               <div className="relative flex items-center">
                 {searchOpen && (
                   <input
                     type="text"
                     placeholder="Ürün ara..."
-                    className="w-44 md:w-56 px-4 py-2 pr-10 bg-white text-brand-light-gray border-2 border-brand-medium-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray"
+                    className="xl:w-56 lg:w-40 px-4 py-2 pr-10 bg-white text-brand-light-gray border-2 border-brand-medium-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray"
                     autoFocus
                   />
                 )}
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
-                  className="absolute right-0 p-1"
+                  className="p-1"
                 >
-                  <Search className="w-8 h-8 text-brand-gold" />
+                  <Search className="xl:w-8 xl:h-8 lg:w-6 lg:h-6 text-brand-gold" />
                 </button>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-lg font-bold text-black hover:text-brand-gold transition-colors whitespace-nowrap border-b-2 border-transparent hover:border-brand-gold py-1"
+                  className="xl:text-lg lg:text-sm font-bold text-black hover:text-brand-gold transition-colors whitespace-nowrap border-b-2 border-transparent hover:border-brand-gold py-1"
                 >
                   {item.name}
                 </Link>

@@ -266,13 +266,13 @@ export default function Uretim() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:05312831934" 
-              className="bg-brand-gold text-brand-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-500 transition-colors text-center"
+              className="px-8 py-4 btn-primary"
             >
               Bizi Arayın
             </a>
             <Link
               href="/urunler/bilezik"
-              className="border-2 border-brand-gold text-brand-gold px-8 py-4 rounded-lg font-semibold text-lg hover:bg-brand-gold hover:text-brand-black transition-colors text-center"
+              className="px-8 py-4 btn-primary"
             >
               Ürünleri İnceleyin
             </Link>
