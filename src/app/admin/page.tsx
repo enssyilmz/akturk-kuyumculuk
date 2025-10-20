@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, deleteDoc, doc, Timestamp } from 'firebase/firestore';
 import { db, auth } from '@/lib/firebase';
 import { signOut } from 'firebase/auth';
 import Link from 'next/link';
@@ -18,7 +18,17 @@ interface Product {
   category?: string;
   description?: string;
   collectionName?: string;
+  createdAt?: Timestamp;
 }
+
+const collections = [
+  { name: 'yuzuk', label: 'Yüzük' },
+  { name: 'bileklik', label: 'Bileklik' },
+  { name: 'bilezik', label: 'Bilezik' },
+  { name: 'kolye', label: 'Kolye' },
+  { name: 'kupe', label: 'Küpe' },
+  { name: 'set', label: 'Set' },
+];
 
 export default function AdminPage() {
   const { user, loading: authLoading } = useAuth(true);
@@ -27,52 +37,42 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const collections = [
-    { name: 'yuzuk', label: 'Yüzük' },
-    { name: 'bileklik', label: 'Bileklik' },
-    { name: 'bilezik', label: 'Bilezik' },
-    { name: 'kolye', label: 'Kolye' },
-    { name: 'kupe', label: 'Küpe' },
-    { name: 'set', label: 'Set' },
-  ];
-
   useEffect(() => {
-    if (user) {
-      fetchProducts();
-    }
-  }, [user]);
+    if (!user) return;
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const allProducts: Product[] = [];
 
-  const fetchProducts = async () => {
-    try {
-      setLoading(true);
-      const allProducts: Product[] = [];
-      
-      for (const col of collections) {
-        const querySnapshot = await getDocs(collection(db, col.name));
-        
-        querySnapshot.forEach((doc) => {
-          allProducts.push({
-            id: doc.id,
-            collectionName: col.name,
-            ...doc.data(),
-          } as Product);
-        });
-      }
+        for (const col of collections) {
+          const querySnapshot = await getDocs(collection(db, col.name));
 
-      allProducts.sort((a: any, b: any) => {
-        if (a.createdAt && b.createdAt) {
-          return b.createdAt.seconds - a.createdAt.seconds;
+          querySnapshot.forEach((d) => {
+            const data = d.data() as Omit<Product, 'id' | 'collectionName'>;
+            allProducts.push({
+              id: d.id,
+              collectionName: col.name,
+              ...data,
+            });
+          });
         }
-        return 0;
-      });
 
-      setProducts(allProducts);
-    } catch (error) {
-      console.error('Ürünler yüklenirken hata:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+        allProducts.sort((a: Product, b: Product) => {
+          const aSec = a.createdAt?.seconds ?? 0;
+          const bSec = b.createdAt?.seconds ?? 0;
+          return bSec - aSec;
+        });
+
+        setProducts(allProducts);
+      } catch (error) {
+        console.error('Ürünler yüklenirken hata:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [user]);
 
   const handleDelete = async (productId: string, productName: string, collectionName?: string) => {
     if (!confirm(`"${productName}" ürününü silmek istediğinize emin misiniz?`)) {

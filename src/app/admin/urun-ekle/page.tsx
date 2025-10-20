@@ -1,12 +1,13 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { CldUploadWidget } from 'next-cloudinary';
+import { useState } from 'react';
+import { CldUploadWidget, CloudinaryUploadWidgetResults } from 'next-cloudinary';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import useAuth from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ProductFormData {
   name: string;
@@ -61,13 +62,15 @@ export default function AdminAddProduct() {
     }));
   };
 
-  const handleImageUpload = (result: any) => {
-    setImageUrl(result.info.secure_url);
+  const handleImageUpload = (result: CloudinaryUploadWidgetResults) => {
+    // @ts-expect-error Cloudinary widget result types are partial; info.secure_url exists when success
+    setImageUrl(result.info.secure_url as string);
     setMessage({ type: 'success', text: 'İlk görsel başarıyla yüklendi!' });
   };
 
-  const handleImageUpload2 = (result: any) => {
-    setImageUrl2(result.info.secure_url);
+  const handleImageUpload2 = (result: CloudinaryUploadWidgetResults) => {
+    // @ts-expect-error Cloudinary widget result types are partial; info.secure_url exists when success
+    setImageUrl2(result.info.secure_url as string);
     setMessage({ type: 'success', text: 'İkinci görsel başarıyla yüklendi!' });
   };
 
@@ -98,7 +101,7 @@ export default function AdminAddProduct() {
       const collectionName = categoryObj?.collection || 'products';
 
       // Ürün verisini hazırla
-      const productData: any = {
+      const productData: Record<string, unknown> = {
         name: formData.name,
         category: formData.category,
         image: imageUrl,
@@ -186,11 +189,12 @@ export default function AdminAddProduct() {
                 </CldUploadWidget>
                 
                 {imageUrl && (
-                  <div className="relative w-full">
-                    <img
+                  <div className="relative w-full h-48">
+                    <Image
                       src={imageUrl}
                       alt="Preview 1"
-                      className="w-full h-48 object-cover rounded-lg border-4 border-brand-gold shadow-lg"
+                      fill
+                      className="object-cover rounded-lg border-4 border-brand-gold shadow-lg"
                     />
                     <button
                       type="button"
@@ -229,11 +233,12 @@ export default function AdminAddProduct() {
                 </CldUploadWidget>
                 
                 {imageUrl2 && (
-                  <div className="relative w-full">
-                    <img
+                  <div className="relative w-full h-48">
+                    <Image
                       src={imageUrl2}
                       alt="Preview 2"
-                      className="w-full h-48 object-cover rounded-lg border-4 border-brand-gold shadow-lg"
+                      fill
+                      className="object-cover rounded-lg border-4 border-brand-gold shadow-lg"
                     />
                     <button
                       type="button"

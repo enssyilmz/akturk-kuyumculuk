@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, Timestamp } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import Image from 'next/image'
 
@@ -14,7 +14,7 @@ interface Product {
   image: string
   image2?: string
   category: string
-  createdAt: any
+  createdAt?: Timestamp
   // Tablo alanları
   renk?: string
   gram?: string
@@ -49,7 +49,7 @@ export default function ProductDetailPage() {
         } else {
           router.push('/urunler/yuzuk')
         }
-      } catch (error) {
+      } catch {
         router.push('/urunler/yuzuk')
       } finally {
         setLoading(false)
@@ -88,10 +88,11 @@ export default function ProductDetailPage() {
                   onClick={() => openLightbox(image)}
                   className="relative h-[400px] md:h-[500px] lg:h-[600px] bg-brand-dark-gray ring-1 ring-brand-gold overflow-hidden group cursor-zoom-in"
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={`${product.name} - ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </button>
               ))}
@@ -181,12 +182,15 @@ export default function ProductDetailPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <img
-              src={lightboxImage}
-              alt={product.name}
-              className="max-h-[90vh] max-w-[90vw] object-contain ring-2 ring-brand-gold"
-              onClick={(e) => e.stopPropagation()}
-            />
+            <div className="relative w-[90vw] h-[90vh]">
+              <Image
+                src={lightboxImage}
+                alt={product.name}
+                fill
+                className="object-contain ring-2 ring-brand-gold"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
           </div>
         )}
       </div>
