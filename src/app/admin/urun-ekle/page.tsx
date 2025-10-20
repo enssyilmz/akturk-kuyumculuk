@@ -12,6 +12,11 @@ interface ProductFormData {
   name: string;
   category: string;
   description?: string;
+  price?: string;
+  renk?: string;
+  gram?: string;
+  ayar?: string;
+  sira?: string;
 }
 
 export default function AdminAddProduct() {
@@ -85,6 +90,11 @@ export default function AdminAddProduct() {
         category: formData.category,
         image: imageUrl,
         image2: imageUrl2,
+        price: formData.price || '',
+        renk: formData.renk || '',
+        gram: formData.gram || '',
+        ayar: formData.ayar || '',
+        sira: formData.sira || '',
         createdAt: Timestamp.now(),
         updatedAt: Timestamp.now(),
       };
@@ -265,21 +275,102 @@ export default function AdminAddProduct() {
                 ))}
               </select>
             </div>
+          </div>
 
-            {/* Açıklama */}
-            <div className="md:col-span-2">
-              <label className="block text-md font-semibold text-brand-black mb-2">
-                Ürün Açıklaması
-              </label>
-              <textarea
-                name="description"
-                value={formData.description || ''}
-                onChange={handleInputChange}
-                rows={4}
-                className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
-                placeholder="Ürün hakkında detaylı açıklama..."
-              />
+          {/* Fiyat Tablosu Bilgileri */}
+          <div className="bg-brand-light-gray/10 rounded-lg p-6 space-y-4">
+            <h3 className="text-lg font-bold text-brand-black mb-4">Fiyat Tablo Bilgileri</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Renk */}
+              <div>
+                <label className="block text-sm font-semibold text-brand-black mb-2">
+                  Renk
+                </label>
+                <input
+                  type="text"
+                  name="renk"
+                  value={formData.renk || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  placeholder="Örn: Sarı"
+                />
+              </div>
+
+              {/* Gram */}
+              <div>
+                <label className="block text-sm font-semibold text-brand-black mb-2">
+                  Gram
+                </label>
+                <input
+                  type="text"
+                  name="gram"
+                  value={formData.gram || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  placeholder="Örn: 320.00 GR"
+                />
+              </div>
+
+              {/* Ayar */}
+              <div>
+                <label className="block text-sm font-semibold text-brand-black mb-2">
+                  Ayar
+                </label>
+                <input
+                  type="text"
+                  name="ayar"
+                  value={formData.ayar || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  placeholder="Örn: 22K"
+                />
+              </div>
+
+              {/* Sıra */}
+              <div>
+                <label className="block text-sm font-semibold text-brand-black mb-2">
+                  Sıra
+                </label>
+                <input
+                  type="text"
+                  name="sira"
+                  value={formData.sira || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  placeholder="Örn: 14K"
+                />
+              </div>
+
+              {/* Fiyat */}
+              <div className="md:col-span-2">
+                <label className="block text-sm font-semibold text-brand-black mb-2">
+                  Fiyat
+                </label>
+                <input
+                  type="text"
+                  name="price"
+                  value={formData.price || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  placeholder="Örn: 3.041.702 TL"
+                />
+              </div>
             </div>
+          </div>
+
+          {/* Açıklama */}
+          <div>
+            <label className="block text-md font-semibold text-brand-black mb-2">
+              Ürün Açıklaması
+            </label>
+            <textarea
+              name="description"
+              value={formData.description || ''}
+              onChange={handleInputChange}
+              rows={4}
+              className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+              placeholder="Ürün hakkında detaylı açıklama..."
+            />
           </div>
 
           {/* Submit Butonu */}
