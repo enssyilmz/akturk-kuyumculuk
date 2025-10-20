@@ -18,11 +18,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-brand-dark-gray shadow-2xl border-b-2 border-brand-gold z-50 shadow-brand-light-gray/50">
+    <nav className="fixed top-0 left-0 right-0 bg-brand-dark-gray border-b-2 border-brand-gold z-50 shadow-2xl shadow-brand-light-gray/50">
       {/* En Üst Bar - İletişim ve Linkler */}
       <div className="bg-brand-black border-b border-brand-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-10">
+          <div className="flex items-center justify-between h-14">
             {/* Sol - Linkler */}
             <div className="flex items-center space-x-6 text-sm">
               <Link href="/neden-akturk-kuyumculuk" className="text-brand-light-gray hover:text-brand-gold transition-colors">
@@ -37,7 +37,7 @@ export default function Navbar() {
             <div className="flex items-center space-x-4 text-sm">
               <a href="tel:05312831934" className="flex items-center space-x-2 text-brand-light-gray hover:text-brand-gold transition-colors">
                 <Phone className="w-4 h-4" />
-                <span>(0531)283 19 34</span>
+                <span>(0531) 283 19 34</span>
               </a>
               <a href="tel:04623321661" className="flex items-center space-x-2 text-brand-light-gray hover:text-brand-gold transition-colors">
                 <Phone className="w-4 h-4" />
