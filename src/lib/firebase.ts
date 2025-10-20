@@ -13,16 +13,10 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
-
-// Firestore
 const db = getFirestore(app);
-
-// Auth
 const auth = getAuth(app);
 
-// Analytics sadece client-side'da çalışır
 let analytics: Analytics | null = null;
 
 if (typeof window !== 'undefined') {

@@ -124,9 +124,7 @@ export default function Page() {
                       {product.description}
                     </p>
                   )}
-                  <p className="text-2xl font-bold text-brand-gold">
-                    {product.price}
-                  </p>
+
                 </div>
               </Link>
             ))}

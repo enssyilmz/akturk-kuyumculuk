@@ -124,9 +124,6 @@ export default function YuzukPage() {
                       {product.description}
                     </p>
                   )}
-                  <p className="text-2xl font-bold text-brand-gold">
-                    {product.price}
-                  </p>
                 </div>
               </Link>
             ))}

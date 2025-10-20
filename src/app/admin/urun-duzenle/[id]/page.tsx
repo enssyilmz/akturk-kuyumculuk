@@ -27,7 +27,7 @@ export default function EditProduct() {
 
   const [formData, setFormData] = useState<ProductFormData>({
     name: '',
-    category: 'yüzük',
+    category: '',
   });
   const [imageUrl, setImageUrl] = useState<string>('');
   const [imageUrl2, setImageUrl2] = useState<string>('');
@@ -43,6 +43,17 @@ export default function EditProduct() {
     { label: 'Kolye', value: 'kolye', collection: 'kolye' },
     { label: 'Küpe', value: 'kupe', collection: 'kupe' },
     { label: 'Set', value: 'set', collection: 'set' },
+  ];
+  const renkler = [
+    { label: 'Yeşil', value: 'yesil', collection: 'yesil' },
+    { label: 'Sarı', value: 'sari', collection: 'sari' },
+    { label: 'Yeşil/Sarı', value: 'yesil_sari', collection: 'yesil_sari' },
+  ];
+  const ayarlar = [
+    { label: '22K', value: '22K', collection: '22K' },
+    { label: '18K', value: '18K', collection: '18K' },
+    { label: '14K', value: '14K', collection: '14K' },
+    { label: '8K', value: '8K', collection: '8K' },
   ];
 
   // Ürün verilerini yükle
@@ -204,7 +215,7 @@ export default function EditProduct() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Görsel 1 */}
             <div>
-              <label className="block text-sm font-semibold text-brand-black mb-2">
+              <label className="text-lg font-bold text-brand-black mb-4">
                 1. Ürün Görseli (Ana Görsel) *
               </label>
               <div className="flex flex-col items-start space-y-3">
@@ -247,7 +258,7 @@ export default function EditProduct() {
 
             {/* Görsel 2 */}
             <div>
-              <label className="block text-sm font-semibold text-brand-black mb-2">
+              <label className="text-lg font-bold text-brand-black mb-4">
                 2. Ürün Görseli (Hover Görseli) *
               </label>
               <div className="flex flex-col items-start space-y-3">
@@ -293,7 +304,7 @@ export default function EditProduct() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Ürün Adı */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-semibold text-brand-black mb-2">
+              <label className="text-lg font-bold text-brand-black mb-4">
                 Ürün Adı *
               </label>
               <input
@@ -309,7 +320,7 @@ export default function EditProduct() {
 
             {/* Kategori */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-semibold text-brand-black mb-2">
+              <label className="text-lg font-bold text-brand-black mb-4">
                 Kategori *
               </label>
               <select
@@ -327,9 +338,23 @@ export default function EditProduct() {
               </select>
             </div>
           </div>
+          
+            {/* Açıklama */}
+          <div>
+            <label className="text-lg font-bold text-brand-black mb-4">
+              Ürün Açıklaması
+            </label>
+            <textarea
+              name="description"
+              value={formData.description || ''}
+              onChange={handleInputChange}
+              rows={4}
+              className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+              placeholder="Ürün hakkında detaylı açıklama..."
+            />
+          </div>
 
           {/* Fiyat Tablosu Bilgileri */}
-          <div className="bg-brand-light-gray/10 rounded-lg p-6 space-y-4">
             <h3 className="text-lg font-bold text-brand-black mb-4">Fiyat Tablo Bilgileri</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Renk */}
@@ -337,29 +362,40 @@ export default function EditProduct() {
                 <label className="block text-sm font-semibold text-brand-black mb-2">
                   Renk
                 </label>
-                <input
-                  type="text"
+                <select
                   name="renk"
                   value={formData.renk || ''}
                   onChange={handleInputChange}
                   className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
-                  placeholder="Örn: Sarı"
-                />
+                >
+                  <option value="">Renk Seçin</option>
+                  {renkler.map((renk) => (
+                    <option key={renk.value} value={renk.label}>
+                      {renk.label}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               {/* Gram */}
               <div>
                 <label className="block text-sm font-semibold text-brand-black mb-2">
-                  Gram
+                  Gram (Sadece Sayı)
                 </label>
-                <input
-                  type="text"
-                  name="gram"
-                  value={formData.gram || ''}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
-                  placeholder="Örn: 320.00 GR"
-                />
+                <div className="relative">
+                  <input
+                    type="number"
+                    step="0.01"
+                    name="gram"
+                    value={formData.gram || ''}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 pr-12 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                    placeholder="Örn: 560"
+                  />
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-medium-gray font-semibold">
+                    GR
+                  </span>
+                </div>
               </div>
 
               {/* Ayar */}
@@ -367,14 +403,19 @@ export default function EditProduct() {
                 <label className="block text-sm font-semibold text-brand-black mb-2">
                   Ayar
                 </label>
-                <input
-                  type="text"
+                <select
                   name="ayar"
                   value={formData.ayar || ''}
                   onChange={handleInputChange}
                   className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
-                  placeholder="Örn: 22K"
-                />
+                >
+                  <option value="">Ayar Seçin</option>
+                  {ayarlar.map((ayar) => (
+                    <option key={ayar.value} value={ayar.label}>
+                      {ayar.label}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               {/* Sıra */}
@@ -407,22 +448,8 @@ export default function EditProduct() {
                 />
               </div>
             </div>
-          </div>
 
-          {/* Açıklama */}
-          <div>
-            <label className="block text-sm font-semibold text-brand-black mb-2">
-              Ürün Açıklaması
-            </label>
-            <textarea
-              name="description"
-              value={formData.description || ''}
-              onChange={handleInputChange}
-              rows={4}
-              className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
-              placeholder="Ürün hakkında detaylı açıklama..."
-            />
-          </div>
+
 
           {/* Submit Butonu */}
           <div className="flex justify-end space-x-4 pt-4">
