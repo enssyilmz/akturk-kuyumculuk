@@ -71,20 +71,20 @@ export default function Home() {
                 }`}
               >
                 <div
-                  className={`max-w-xl ${
+                  className={`max-w-xl backdrop-blur-sm bg-black/40 p-6 md:p-8 rounded-xl ${
                     slide.textPosition === 'right' ? 'text-right' : 'text-left'
                   }`}
                 >
-                  <h1 className="text-5xl md:text-6xl font-serif text-white mb-2">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-2">
                     {slide.title}
                   </h1>
-                  <h2 className="text-3xl md:text-4xl font-light text-white mb-2">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-white mb-2">
                     {slide.subtitle}
                   </h2>
-                  <p className="text-6xl md:text-7xl font-bold text-white mb-2">
+                  <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-2">
                     {slide.highlight}
                   </p>
-                  <p className="text-3xl md:text-4xl font-light text-white mb-8">
+                  <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-white mb-8">
                     {slide.description}
                   </p>
                 </div>
