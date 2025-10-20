@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type SortOption = 'recommended' | 'name-asc' | 'name-desc';
 
@@ -17,10 +18,10 @@ interface Product {
 }
 
 export default function YuzukPage() {
-  const [products, yuzukProducts] = useState<Product[]>([])
-  const [sortedProducts, yuzukSortedProducts] = useState<Product[]>([])
-  const [loading, yuzukLoading] = useState(true)
-  const [sortBy, yuzukSortBy] = useState<SortOption>('recommended')
+  const [products, setProducts] = useState<Product[]>([])
+  const [sortedProducts, setSortedProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+  const [sortBy, setSortBy] = useState<SortOption>('recommended')
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -30,12 +31,12 @@ export default function YuzukPage() {
           id: doc.id,
           ...doc.data()
         })) as Product[]
-        yuzukProducts(productsData)
-        yuzukSortedProducts(productsData)
+        setProducts(productsData)
+        setSortedProducts(productsData)
       } catch (error) {
         console.error('Ürünler yüklenirken hata:', error)
       } finally {
-        yuzukLoading(false)
+        setLoading(false)
       }
     }
 
@@ -43,7 +44,7 @@ export default function YuzukPage() {
   }, [])
 
   useEffect(() => {
-    let sorted = [...products];
+  let sorted = [...products];
     
     switch (sortBy) {
       case 'name-asc':
@@ -58,7 +59,7 @@ export default function YuzukPage() {
         break;
     }
 
-    yuzukSortedProducts(sorted);
+    setSortedProducts(sorted);
   }, [sortBy, products]);
 
   if (loading) {
@@ -79,7 +80,7 @@ export default function YuzukPage() {
             <select
               id="sort"
               value={sortBy}
-              onChange={(e) => yuzukSortBy(e.target.value as SortOption)}
+              onChange={(e) => setSortBy(e.target.value as SortOption)}
               className="bg-brand-dark-gray text-brand-light-gray border border-brand-gold px-4 py-2 focus:outline-none"
             >
               <option value="recommended">Önerilen</option>
@@ -102,16 +103,18 @@ export default function YuzukPage() {
                 className="bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer group transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50" 
               >
                 <div className="relative h-100 overflow-hidden">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+                    fill
+                    className="object-cover transition-opacity duration-300 group-hover:opacity-0"
                   />
                   {product.image2 && (
-                    <img
+                    <Image
                       src={product.image2}
                       alt={`${product.name} - 2`}
-                      className="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      fill
+                      className="object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     />
                   )}
                 </div>

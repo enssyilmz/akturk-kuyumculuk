@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -38,17 +39,18 @@ export default function LoginPage() {
       await signInWithEmailAndPassword(auth, email, password);
       // Başarılı giriş - admin sayfasına yönlendir
       router.push('/admin');
-    } catch (err: any) {
+    } catch (err) {
+      const error = err as { code?: string };
       console.error('Giriş hatası:', err);
       
       // Türkçe hata mesajları
-      if (err.code === 'auth/invalid-email') {
+      if (error.code === 'auth/invalid-email') {
         setError('Geçersiz e-posta adresi');
-      } else if (err.code === 'auth/user-not-found') {
+      } else if (error.code === 'auth/user-not-found') {
         setError('Kullanıcı bulunamadı');
-      } else if (err.code === 'auth/wrong-password') {
+      } else if (error.code === 'auth/wrong-password') {
         setError('Hatalı şifre');
-      } else if (err.code === 'auth/invalid-credential') {
+      } else if (error.code === 'auth/invalid-credential') {
         setError('E-posta veya şifre hatalı');
       } else {
         setError('Giriş yapılırken bir hata oluştu');
@@ -175,7 +177,7 @@ export default function LoginPage() {
 
           {/* Ana Sayfaya Dön */}
           <div className="mt-8 text-center">
-            <a
+            <Link
               href="/"
               className="text-sm text-brand-medium-gray hover:text-brand-gold transition-colors font-medium inline-flex items-center"
             >
@@ -183,7 +185,7 @@ export default function LoginPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               Ana Sayfaya Dön
-            </a>
+            </Link>
           </div>
         </div>
 

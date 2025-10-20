@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type SortOption = 'recommended' | 'name-asc' | 'name-desc';
 
@@ -102,16 +103,18 @@ export default function Page() {
                 className="bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer group transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50"
               >
                 <div className="relative h-100 overflow-hidden">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+                    fill
+                    className="object-cover transition-opacity duration-300 group-hover:opacity-0"
                   />
                   {product.image2 && (
-                    <img
+                    <Image
                       src={product.image2}
                       alt={`${product.name} - 2`}
-                      className="w-full h-full object-cover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      fill
+                      className="object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     />
                   )}
                 </div>
