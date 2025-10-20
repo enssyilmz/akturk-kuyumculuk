@@ -19,8 +19,6 @@ export default function useAuth(requireAuthentication: boolean = false) {
       } else {
         setUser(null);
         setLoading(false);
-        
-        // Eğer authentication gerekiyorsa ve kullanıcı yoksa, hemen yönlendir
         if (requireAuthentication && pathname !== '/giris') {
           router.replace('/giris');
         }

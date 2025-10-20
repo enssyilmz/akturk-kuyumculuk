@@ -124,7 +124,7 @@ export default function ProductDetailPage() {
                     <tr>
                       <td className="px-4 py-3 text-brand-gold">{product.category}</td>
                       <td className="px-4 py-3 text-brand-light-gray">{product.renk || '-'}</td>
-                      <td className="px-4 py-3 text-brand-light-gray">{product.gram || '-'}</td>
+                      <td className="px-4 py-3 text-brand-light-gray">{product.gram ? `${product.gram}GR` : '-'}</td>
                       <td className="px-4 py-3 text-brand-light-gray">{product.ayar || '-'}</td>
                       <td className="px-4 py-3 text-brand-light-gray">{product.sira || '-'}</td>
                       <td className="px-4 py-3 text-right text-brand-gold font-bold text-lg">{product.price}</td>

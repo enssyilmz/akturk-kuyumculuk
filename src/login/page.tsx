@@ -14,14 +14,11 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  // Kullanıcı zaten giriş yapmışsa admin paneline yönlendir
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // Kullanıcı giriş yapmış, admin paneline yönlendir
         router.push('/admin');
       } else {
-        // Kullanıcı giriş yapmamış, login sayfasında kal
         setCheckingAuth(false);
       }
     });
@@ -36,12 +33,10 @@ export default function LoginPage() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Başarılı giriş - admin sayfasına yönlendir
       router.push('/admin');
     } catch (err: any) {
       console.error('Giriş hatası:', err);
       
-      // Türkçe hata mesajları
       if (err.code === 'auth/invalid-email') {
         setError('Geçersiz e-posta adresi');
       } else if (err.code === 'auth/user-not-found') {
@@ -58,10 +53,9 @@ export default function LoginPage() {
     }
   };
 
-  // Auth kontrolü yapılırken loading göster
   if (checkingAuth) {
     return (
-      <div className="min-h-screen bg-brand-lighter-gray flex items-center justify-center">
+      <div className="min-h-screen bg-brand-lighter-gray flex items-center justify-center px-4">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-brand-gold mx-auto"></div>
           <p className="mt-4 text-brand-medium-gray font-medium">Kontrol ediliyor...</p>

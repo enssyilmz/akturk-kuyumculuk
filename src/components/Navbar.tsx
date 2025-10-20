@@ -18,7 +18,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-brand-dark-gray shadow-2xl border-b-2 border-brand-gold z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-brand-dark-gray shadow-2xl border-b-2 border-brand-gold z-50 shadow-brand-light-gray/50">
       {/* En Üst Bar - İletişim ve Linkler */}
       <div className="bg-brand-black border-b border-brand-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
