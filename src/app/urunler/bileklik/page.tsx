@@ -68,15 +68,7 @@ export default function Page() {
       </div>
     )
   }
-
-  const titles = {
-    'bileklik': 'Bileklik Koleksiyonu',
-    'bilezik': 'Bilezik Koleksiyonu',
-    'kolye': 'Kolye Koleksiyonu',
-    'kupe': 'Küpe Koleksiyonu',
-    'set': 'Set Koleksiyonu'
-  };
-
+  
   return (
     <div className="min-h-screen bg-brand-black">
       <div className="container mx-auto px-4 pt-4 pb-12">
