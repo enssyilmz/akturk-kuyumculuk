@@ -1,130 +1,59 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import FeaturedProducts from '@/components/FeaturedProducts';
+import HeroSlider from '@/components/HeroSlider';
 import { Award, Shield, Clock, Gem, Calculator, Package } from 'lucide-react';
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
+  const features = [
     {
-      id: 1,
-      title: 'Senin Değişimine',
-      subtitle: 'Ayarlanabilir Kilidi ile',
-      highlight: '7/24',
-      description: 'Uyum Sağlar..',
-      buttonText: 'ALIŞVERİŞE BAŞLA',
-      image: '/images/bg-1.png',
-      textPosition: 'left',
+      icon: Award,
+      title: 'Kalite Garantisi',
+      description: 'Her ürün en kaliteli malzemelerle üretilir',
     },
     {
-      id: 2,
-      title: 'Zarif ve Modern',
-      subtitle: 'Koleksiyonlarımızla',
-      highlight: 'Özel',
-      description: 'Tasarımlar..',
-      buttonText: 'ALIŞVERİŞE BAŞLA',
-      image: '/images/bg-2.png',
-      textPosition: 'right',
+      icon: Shield,
+      title: 'Güvenli Alışveriş',
+      description: 'SSL sertifikalı güvenli ödeme',
+    },
+    {
+      icon: Clock,
+      title: 'Hızlı Teslimat',
+      description: '48 saat içinde kapınızda',
+    },
+    {
+      icon: Gem,
+      title: 'Özel Tasarım',
+      description: 'Size özel tasarım imkanı',
+    },
+    {
+      icon: Calculator,
+      title: 'Uygun Fiyat',
+      description: 'En uygun fiyat garantisi',
+    },
+    {
+      icon: Package,
+      title: 'Özenli Paketleme',
+      description: 'Her ürün özel kutusunda',
     },
   ];
-
-  // 5 saniyede bir otomatik geçiş
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [slides.length]);
 
   return (
     <div className="min-h-screen bg-brand-dark-gray">
       {/* Hero Slider */}
-      <div className="relative h-[600px] overflow-hidden bg-brand-black -mt-3">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            {/* Arka Plan Resmi */}
-            <div className="absolute inset-0">
-              <Image
-                src={slide.image}
-                alt={`${slide.title} - arka plan`}
-                fill
-                priority={index === 0}
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20"></div>
-            </div>
+      <HeroSlider />
 
-            {/* İçerik */}
-            <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div
-                className={`h-full flex items-center ${
-                  slide.textPosition === 'right' ? 'justify-end' : 'justify-start'
-                }`}
-              >
-                <div
-                  className={`max-w-xl backdrop-blur-sm bg-black/40 p-6 md:p-8 rounded-xl ${
-                    slide.textPosition === 'right' ? 'text-right' : 'text-left'
-                  }`}
-                >
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-2">
-                    {slide.title}
-                  </h1>
-                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-white mb-2">
-                    {slide.subtitle}
-                  </h2>
-                  <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-2">
-                    {slide.highlight}
-                  </p>
-                  <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-white mb-8">
-                    {slide.description}
-                  </p>
-                </div>
-              </div>
+      {/* Özellikler */}
+      <div className="max-w-8xl mx-auto px-4 sm:px-8 lg:px-14 py-4 sm:py-8 lg:py-14">
+        <div className="grid grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-4 xl:gap-6">
+          {features.map((feature) => (
+            <div key={feature.title} className="flex flex-col items-center text-center">
+              <feature.icon className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 text-brand-gold mb-2 sm:mb-3 lg:mb-4" />
+              <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-serif text-white mb-1 sm:mb-2">{feature.title}</h3>
+              <p className="text-xs sm:text-sm lg:text-base text-brand-light-gray">{feature.description}</p>
             </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Özellikler Bölümü */}
-      <div className="bg-brand-dark-gray py-16 border-b-2 border-brand-gold shadow-2xl shadow-brand-light-gray/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-8">
-            {[
-              { icon: Award, title: 'Sertifikalı Ürünler' },
-              { icon: Shield, title: 'Güvenli İnceleme' },
-              { icon: Clock, title: '7/24 Katalog' },
-              { icon: Gem, title: 'Özel Tasarımlar' },
-              { icon: Calculator, title: 'Fiyat Hesaplama' },
-              { icon: Package, title: 'Mağaza Teslim' },
-            ].map((item, index, array) => {
-              const IconComponent = item.icon;
-              return (
-                <React.Fragment key={index}>
-                  <div className="text-center flex-1">
-                    <div className="flex justify-center mb-3">
-                      <IconComponent className="w-10 h-10 text-brand-gold" strokeWidth={2} />
-                    </div>
-                    <p className="text-lg text-white">
-                      {item.title}
-                    </p>
-                  </div>
-                  {/* Araya çizgi ekle, son elemandan sonra ekleme */}
-                  {index < array.length - 1 && (
-                    <div className="h-16 w-px bg-brand-gold shadow-lg shadow-brand-gold/50"></div>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div>
+          ))}
         </div>
       </div>
       <FeaturedProducts />
