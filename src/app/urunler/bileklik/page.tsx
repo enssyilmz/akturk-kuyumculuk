@@ -72,7 +72,7 @@ export default function Page() {
   
   return (
     <div className="min-h-screen bg-brand-black">
-      <div className="container mx-auto px-4 pt-4 pb-12">
+      <div className="container mx-auto px-4 pt-30 pb-12">
         <h1 className="text-4xl font-bold text-brand-gold text-center">BİLEKLİK</h1>
         <div className="flex items-center justify-end mb-8">          
           <div className="flex items-center gap-2">

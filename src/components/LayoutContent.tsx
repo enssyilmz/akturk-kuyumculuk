@@ -24,7 +24,7 @@ export default function LayoutContent({
           <Sidebar />
         </>
       )}
-      <main className={hideNavigation ? "" : "pt-20 sm:pt-24 lg:pt-32 xl:pt-40"}>
+      <main className={hideNavigation ? "" : "pt-20 sm:pt-24 lg:pt-30 "}>
         {children}
       </main>
     </>

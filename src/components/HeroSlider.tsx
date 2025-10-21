@@ -50,7 +50,7 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden bg-brand-black">
+    <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] overflow-hidden bg-brand-black">
       {slides.map((slide, index) => (
         <div
           key={slide.id}

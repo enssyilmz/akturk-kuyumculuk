@@ -75,7 +75,7 @@ export default function ProductDetailPage() {
   const images = [product.image, product.image2].filter(Boolean) as string[]
 
   return (
-    <div className="min-h-screen bg-brand-black pt-12 pb-12">
+    <div className="min-h-screen bg-brand-black pt-30 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           <div className="space-y-4">
