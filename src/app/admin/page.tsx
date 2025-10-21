@@ -7,6 +7,7 @@ import { signOut } from 'firebase/auth';
 import Link from 'next/link';
 import Image from 'next/image';
 import useAuth from '@/hooks/useAuth';
+import ConfirmPopup from '@/components/ConfirmPopup';
 import { Pencil, Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -36,6 +37,17 @@ export default function AdminPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [deletePopup, setDeletePopup] = useState<{
+    isOpen: boolean;
+    productId: string;
+    productName: string;
+    collectionName?: string;
+  }>({
+    isOpen: false,
+    productId: '',
+    productName: '',
+    collectionName: '',
+  });
 
   useEffect(() => {
     if (!user) return;
@@ -75,10 +87,6 @@ export default function AdminPage() {
   }, [user]);
 
   const handleDelete = async (productId: string, productName: string, collectionName?: string) => {
-    if (!confirm(`"${productName}" ürününü silmek istediğinize emin misiniz?`)) {
-      return;
-    }
-
     try {
       setDeletingId(productId);
       const targetCollection = collectionName || 'products';
@@ -91,6 +99,28 @@ export default function AdminPage() {
     } finally {
       setDeletingId(null);
     }
+  };
+
+  const openDeletePopup = (productId: string, productName: string, collectionName?: string) => {
+    setDeletePopup({
+      isOpen: true,
+      productId,
+      productName,
+      collectionName,
+    });
+  };
+
+  const closeDeletePopup = () => {
+    setDeletePopup({
+      isOpen: false,
+      productId: '',
+      productName: '',
+      collectionName: '',
+    });
+  };
+
+  const confirmDelete = () => {
+    handleDelete(deletePopup.productId, deletePopup.productName, deletePopup.collectionName);
   };
 
   const handleLogout = async () => {
@@ -265,7 +295,7 @@ export default function AdminPage() {
                             <Pencil className="w-5 h-5" />
                           </Link>
                           <button
-                            onClick={() => handleDelete(product.id, product.name, product.collectionName)}
+                            onClick={() => openDeletePopup(product.id, product.name, product.collectionName)}
                             disabled={deletingId === product.id}
                             className="text-red-500 hover:text-red-400 transition-colors"
                             title="Sil"
@@ -286,6 +316,18 @@ export default function AdminPage() {
           </div>
         )}
       </div>
+
+      {/* Delete Confirmation Popup */}
+      <ConfirmPopup
+        isOpen={deletePopup.isOpen}
+        onClose={closeDeletePopup}
+        onConfirm={confirmDelete}
+        title="Ürün Silme Onayı"
+        message={`"${deletePopup.productName}" ürününü silmek istediğinize emin misiniz? Bu işlem geri alınamaz.`}
+        confirmText="Sil"
+        cancelText="İptal"
+        confirmButtonClass="btn-warning"
+      />
     </div>
   );
 }

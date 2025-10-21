@@ -406,7 +406,7 @@ export default function AdminAddProduct() {
           <div className="flex justify-end space-x-4 pt-4">
             <Link
               href="/admin"
-              className="px-6 py-3 btn-secondary "
+              className="px-6 py-3 btn-warning"
             >
               İptal
             </Link>
