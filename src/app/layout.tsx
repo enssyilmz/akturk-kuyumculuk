@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Aktürk Kuyumculuk",
   description: "Kuyumculuk ve mücevherat",
+  icons: {
+    icon: '/images/logo-no-background.png',
+  },
 };
 
 export default function RootLayout({
