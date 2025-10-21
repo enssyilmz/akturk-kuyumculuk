@@ -63,47 +63,47 @@ export default function LoginPage() {
   // Auth kontrolü yapılırken loading göster
   if (checkingAuth) {
     return (
-      <div className="min-h-screen bg-brand-lighter-gray flex items-center justify-center">
+      <div className="min-h-screen bg-brand-dark-gray flex items-center justify-center px-3 sm:px-4">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-brand-gold mx-auto"></div>
-          <p className="mt-4 text-brand-medium-gray font-medium">Kontrol ediliyor...</p>
+          <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 border-b-4 border-brand-gold mx-auto"></div>
+          <p className="mt-3 sm:mt-4 text-brand-medium-gray font-medium text-sm sm:text-base">Kontrol ediliyor...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-brand-dark-gray flex items-center justify-center px-4">
+    <div className="min-h-screen bg-brand-dark-gray flex items-center justify-center px-3 sm:px-4 lg:px-6">
       <div className="max-w-md w-full">
         {/* Logo/Başlık */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-10 lg:mb-12">
           <div className="inline-block">
-            <h1 className="text-5xl font-serif text-brand-light-gray mb-3 tracking-wide">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif text-brand-light-gray mb-2 sm:mb-3 tracking-wide">
               Aktürk Kuyumculuk
             </h1>
-            <div className="h-1 bg-brand-light-gray rounded-full"></div>
+            <div className="h-0.5 sm:h-1 bg-brand-light-gray rounded-full"></div>
           </div>
-          <p className="text-brand-light-gray mt-5 text-lg font-medium">Admin Paneli</p>
+          <p className="text-brand-light-gray mt-3 sm:mt-4 lg:mt-5 text-base sm:text-lg lg:text-xl font-medium">Admin Paneli</p>
         </div>
 
         {/* Login Form */}
-        <div className="bg-white rounded-2xl shadow-2xl p-10 border-t-4 border-brand-gold">
-          <h2 className="text-3xl font-bold text-brand-black mb-8 text-center">
+        <div className="bg-white shadow-2xl p-4 sm:p-8 lg:p-10 xl:p-12 border-t-4 border-brand-gold">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-black mb-6 sm:mb-8 text-center">
             Giriş Yap
           </h2>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
-              <p className="text-red-800 text-sm font-medium">{error}</p>
+            <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
+              <p className="text-red-800 text-xs sm:text-sm font-medium">{error}</p>
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-4 sm:space-y-5 lg:space-y-6">
             {/* Email */}
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-brand-dark-gray mb-2"
+                className="block text-xs sm:text-sm font-semibold text-brand-dark-gray mb-1.5 sm:mb-2"
               >
                 E-posta
               </label>
@@ -112,7 +112,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
                 placeholder="galipsafa@admin.com"
                 required
                 disabled={loading}
@@ -123,7 +123,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-semibold text-brand-dark-gray mb-2"
+                className="block text-xs sm:text-sm font-semibold text-brand-dark-gray mb-1.5 sm:mb-2"
               >
                 Şifre
               </label>
@@ -132,7 +132,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
                 placeholder="••••••••"
                 required
                 disabled={loading}
@@ -143,12 +143,12 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 btn-primary"
+              className="w-full py-3 sm:py-4 btn-primary text-sm sm:text-base lg:text-lg font-bold"
             >
               {loading ? (
                 <span className="flex items-center justify-center">
                   <svg
-                    className="animate-spin -ml-1 mr-3 h-6 w-6 text-white"
+                    className="animate-spin -ml-1 mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 text-white"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -176,12 +176,12 @@ export default function LoginPage() {
           </form>
 
           {/* Ana Sayfaya Dön */}
-          <div className="mt-8 text-center">
+          <div className="mt-6 sm:mt-8 text-center">
             <Link
               href="/"
-              className="text-sm text-brand-medium-gray hover:text-brand-gold transition-colors font-medium inline-flex items-center"
+              className="text-xs sm:text-sm text-brand-medium-gray hover:text-brand-gold transition-colors font-medium inline-flex items-center"
             >
-              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               Ana Sayfaya Dön
@@ -190,8 +190,8 @@ export default function LoginPage() {
         </div>
 
         {/* Bilgilendirme */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-brand-light-gray bg-brand-black  py-3 px-4">
+        <div className="mt-6 sm:mt-8 text-center">
+          <p className="text-xs sm:text-sm text-brand-light-gray bg-brand-black py-2.5 sm:py-3 px-3 sm:px-4 rounded">
             Admin paneline erişim için yetkili hesap gereklidir
           </p>
         </div>
