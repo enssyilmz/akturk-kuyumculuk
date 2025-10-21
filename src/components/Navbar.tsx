@@ -1,11 +1,10 @@
 'use client';
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import SearchBox from './SearchBox';
 
 export default function Navbar() {
-  const [searchOpen, setSearchOpen] = useState(false);
 
   const menuItems = [
     { name: 'BİLEKLİK', href: '/urunler/bileklik' },
@@ -82,22 +81,10 @@ export default function Navbar() {
 
             {/* Arama (sağda) */}
             <div className="flex-1 flex justify-end items-center">
-              <div className="relative flex items-center">
-                {searchOpen && (
-                  <input
-                    type="text"
-                    placeholder="Ürün ara..."
-                    className="xl:w-56 lg:w-40 px-4 py-2 pr-10 bg-white text-brand-light-gray border-2 border-brand-medium-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray"
-                    autoFocus
-                  />
-                )}
-                <button
-                  onClick={() => setSearchOpen(!searchOpen)}
-                  className="p-1"
-                >
-                  <Search className="xl:w-8 xl:h-8 lg:w-6 lg:h-6 text-brand-gold" />
-                </button>
-              </div>
+              <SearchBox 
+                inputWidth="xl:w-56 lg:w-40"
+                iconSize="xl:w-8 xl:h-8 lg:w-6 lg:h-6"
+              />
             </div>
           </div>
         </div>

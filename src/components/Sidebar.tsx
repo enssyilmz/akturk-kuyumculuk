@@ -2,10 +2,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, Phone, Menu, X } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
+import SearchBox from './SearchBox';
 
 export default function Sidebar() {
-  const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const menuItems = [
@@ -86,23 +86,12 @@ export default function Sidebar() {
               </div>
 
               {/* Arama (sağda) */}
-              <div className="flex justify-end items-center z-10">
-                <div className="relative flex items-center">
-                  {searchOpen && (
-                    <input
-                      type="text"
-                      placeholder="Ürün ara..."
-                      className="w-32 sm:w-44 px-4 py-2 pr-10 bg-white text-brand-light-gray border-2 border-brand-medium-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray"
-                      autoFocus
-                    />
-                  )}
-                  <button
-                    onClick={() => setSearchOpen(!searchOpen)}
-                    className="p-1"
-                  >
-                    <Search className="w-6 h-6 text-brand-gold" />
-                  </button>
-                </div>
+              <div className="flex justify-end items-center z-20">
+                <SearchBox 
+                  inputWidth="w-32 sm:w-50"
+                  iconSize="w-6 h-6"
+                  onResultClick={() => setMobileMenuOpen(false)}
+                />
               </div>
             </div>
           </div>
