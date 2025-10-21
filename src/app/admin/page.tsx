@@ -173,13 +173,13 @@ export default function AdminPage() {
         {/* İstatistik Kartları */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {/* Toplam Ürün */}
-          <div className="bg-brand-black border-2 border-brand-gold rounded-lg p-6 shadow-xl">
+          <div className="bg-brand-black border-2 border-brand-gold  p-6 shadow-xl">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-brand-medium-gray text-sm font-medium mb-1">Toplam Ürün</p>
                 <p className="text-4xl font-bold text-brand-gold">{products.length}</p>
               </div>
-              <div className="bg-brand-gold bg-opacity-20 p-4 rounded-lg">
+              <div className="bg-brand-gold bg-opacity-20 p-4 ">
                 <svg className="w-10 h-10 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
@@ -188,13 +188,13 @@ export default function AdminPage() {
           </div>
 
           {/* Kategoriler */}
-          <div className="bg-brand-black border-2 border-brand-medium-gray rounded-lg p-6 shadow-xl">
+          <div className="bg-brand-black border-2 border-brand-medium-gray  p-6 shadow-xl">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-brand-medium-gray text-sm font-medium mb-1">Kategori Sayısı</p>
                 <p className="text-4xl font-bold text-brand-light-gray">{collections.length}</p>
               </div>
-              <div className="bg-brand-medium-gray bg-opacity-20 p-4 rounded-lg">
+              <div className="bg-brand-medium-gray bg-opacity-20 p-4 ">
                 <svg className="w-10 h-10 text-brand-light-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                 </svg>
@@ -203,13 +203,13 @@ export default function AdminPage() {
           </div>
 
           {/* Durum */}
-          <div className="bg-brand-black border-2 border-green-500 rounded-lg p-6 shadow-xl">
+          <div className="bg-brand-black border-2 border-green-500  p-6 shadow-xl">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-brand-medium-gray text-sm font-medium mb-1">Sistem Durumu</p>
                 <p className="text-2xl font-bold text-green-500">Aktif</p>
               </div>
-              <div className="bg-green-500 bg-opacity-20 p-4 rounded-lg">
+              <div className="bg-green-500 bg-opacity-20 p-4 ">
                 <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -220,7 +220,7 @@ export default function AdminPage() {
 
         {/* Ürün Tablosu */}
         {products.length === 0 ? (
-          <div className="bg-brand-black border-2 border-brand-gold rounded-lg shadow-2xl p-12 text-center">
+          <div className="bg-brand-black border-2 border-brand-gold  shadow-2xl p-12 text-center">
             <div className="text-6xl mb-4">📦</div>
             <h3 className="text-xl font-semibold text-brand-gold mb-2">
               Henüz ürün eklenmemiş
@@ -230,13 +230,13 @@ export default function AdminPage() {
             </p>
             <Link
               href="/admin/urun-ekle"
-              className="inline-block px-6 py-3 bg-brand-gold text-white rounded-lg hover:bg-brand-dark-gray transition-colors font-bold shadow-lg"
+              className="inline-block px-6 py-3 bg-brand-gold text-white  hover:bg-brand-dark-gray transition-colors font-bold shadow-lg"
             >
               Ürün Ekle
             </Link>
           </div>
         ) : (
-          <div className="bg-brand-black border-2 border-brand-medium-gray rounded-lg shadow-2xl overflow-hidden">
+          <div className="bg-brand-black border-2 border-brand-medium-gray  shadow-2xl overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-brand-black border-b-2 border-brand-gold">
@@ -260,7 +260,7 @@ export default function AdminPage() {
                     <tr key={product.id} className="bg-white transition-colors">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
-                          <div className="relative h-16 w-16 flex-shrink-0 border-2 border-brand-gold rounded-lg overflow-hidden">
+                          <div className="relative h-16 w-16 flex-shrink-0 border-2 border-brand-gold  overflow-hidden">
                             <Image
                               src={product.image}
                               alt={product.name}

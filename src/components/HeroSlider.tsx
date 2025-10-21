@@ -78,7 +78,7 @@ export default function HeroSlider() {
               }`}
             >
               <div
-                className={`max-w-sm sm:max-w-md lg:max-w-xl backdrop-blur-xs bg-black/40 p-4 sm:p-6 lg:p-8 xl:p-10 rounded-lg sm:rounded-xl ${
+                className={`max-w-sm sm:max-w-md lg:max-w-xl backdrop-blur-xs bg-black/40 p-4 sm:p-6 lg:p-8 xl:p-10  sm: ${
                   slide.textPosition === 'right' ? 'text-right' : 'text-left'
                 }`}
               >

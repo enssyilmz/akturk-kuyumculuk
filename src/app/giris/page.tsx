@@ -112,7 +112,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
+                className="w-full px-4 py-3 border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
                 placeholder="galipsafa@admin.com"
                 required
                 disabled={loading}
@@ -132,7 +132,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
+                className="w-full px-4 py-3 border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
                 placeholder="••••••••"
                 required
                 disabled={loading}
@@ -191,7 +191,7 @@ export default function LoginPage() {
 
         {/* Bilgilendirme */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-brand-light-gray bg-brand-black rounded-lg py-3 px-4">
+          <p className="text-sm text-brand-light-gray bg-brand-black  py-3 px-4">
             Admin paneline erişim için yetkili hesap gereklidir
           </p>
         </div>

@@ -65,23 +65,23 @@ export default function Page() {
   if (loading) {
     return (
       <div className="min-h-screen bg-brand-black flex items-center justify-center">
-        <div className="text-brand-gold text-xl">Yükleniyor...</div>
+        <div className="text-brand-gold text-base sm:text-lg lg:text-xl">Yükleniyor...</div>
       </div>
     )
   }
 
   return (
     <div className="min-h-screen bg-brand-black">
-      <div className="container mx-auto px-4 pt-30 pb-12">
-        <h1 className="text-4xl font-bold text-brand-gold text-center">SET</h1>
-        <div className="flex items-center justify-end mb-8">          
+      <div className="container mx-auto px-3 sm:px-4 lg:px-8 pt-8 pt-12 lg:pt-30 pb-8 xs:pb-12">
+        <h1 className="text-xl sm:text-xl lg:text-3xl xl:text-4xl font-bold text-brand-gold text-center mb-6 sm:mb-8">SET</h1>
+        <div className="flex items-center justify-end mb-4 sm:mb-6 lg:mb-8">          
           <div className="flex items-center gap-2">
-            <label htmlFor="sort" className="text-brand-light-gray">Sırala:</label>
+            <label htmlFor="sort" className="text-brand-light-gray text-xs sm:text-sm lg:text-base">Sırala:</label>
             <select
               id="sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="bg-brand-dark-gray text-brand-light-gray border border-brand-gold px-4 py-2 focus:outline-none"
+              className="bg-brand-dark-gray text-brand-light-gray border border-brand-gold px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 text-xs sm:text-sm lg:text-base focus:outline-none rounded"
             >
               <option value="recommended">Önerilen</option>
               <option value="name-asc">İsme Göre (A-Z)</option>
@@ -91,18 +91,18 @@ export default function Page() {
         </div>
 
         {sortedProducts.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-brand-light-gray text-lg">Henüz ürün bulunmamaktadır.</p>
+          <div className="text-center py-8 sm:py-12">
+            <p className="text-brand-light-gray text-sm sm:text-base lg:text-lg">Henüz ürün bulunmamaktadır.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
             {sortedProducts.map((product) => (
               <Link 
                 key={product.id}
                 href={`/urunler/set/${product.id}`}
                 className="bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer group transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50"
               >
-                <div className="relative h-100 overflow-hidden">
+                <div className="relative h-40 sm:h-60 lg:h-80 xl:h-100 overflow-hidden">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -118,12 +118,12 @@ export default function Page() {
                     />
                   )}
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-brand-gold text-center">
+                <div className="p-2 sm:p-3 lg:p-4 xl:p-6">
+                  <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-brand-gold text-center">
                     {product.name}
                   </h3>
                   {product.description && (
-                    <p className="text-brand-light-gray text-center">
+                    <p className="text-brand-light-gray text-center text-xs sm:text-sm lg:text-base mt-1 sm:mt-2">
                       {product.description}
                     </p>
                   )}

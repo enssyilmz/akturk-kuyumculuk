@@ -196,7 +196,7 @@ export default function EditProduct() {
         {/* Mesajlar */}
         {message && (
           <div
-            className={`mb-6 p-4 rounded-lg shadow-lg ${
+            className={`mb-6 p-4  shadow-lg ${
               message.type === 'success'
                 ? 'bg-green-900 text-green-300 border-2 border-green-600'
                 : 'bg-red-900 text-red-300 border-2 border-red-600'
@@ -207,7 +207,7 @@ export default function EditProduct() {
         )}
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="bg-white border-t-4 border-brand-gold rounded-lg shadow-2xl p-8 space-y-6">
+        <form onSubmit={handleSubmit} className="bg-white border-t-4 border-brand-gold  shadow-2xl p-8 space-y-6">
           {/* Başlık */}
           <div className="mb-4">
             <h1 className="text-2xl font-bold text-brand-black">Ürün Düzenle</h1>
@@ -243,7 +243,7 @@ export default function EditProduct() {
                       src={imageUrl}
                       alt="Preview 1"
                       fill
-                      className="object-cover rounded-lg border-4 border-brand-gold shadow-lg"
+                      className="object-cover  border-4 border-brand-gold shadow-lg"
                     />
                     <button
                       type="button"
@@ -287,7 +287,7 @@ export default function EditProduct() {
                       src={imageUrl2}
                       alt="Preview 2"
                       fill
-                      className="object-cover rounded-lg border-4 border-brand-gold shadow-lg"
+                      className="object-cover  border-4 border-brand-gold shadow-lg"
                     />
                     <button
                       type="button"
@@ -317,7 +317,7 @@ export default function EditProduct() {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                 placeholder="Örn: Altın Harf Yüzük"
                 required
               />
@@ -332,7 +332,7 @@ export default function EditProduct() {
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                 required
               >
                 {categories.map((cat) => (
@@ -354,7 +354,7 @@ export default function EditProduct() {
               value={formData.description || ''}
               onChange={handleInputChange}
               rows={4}
-              className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+              className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
               placeholder="Ürün hakkında detaylı açıklama..."
             />
           </div>
@@ -371,7 +371,7 @@ export default function EditProduct() {
                   name="renk"
                   value={formData.renk || ''}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                 >
                   <option value="">Renk Seçin</option>
                   {renkler.map((renk) => (
@@ -394,7 +394,7 @@ export default function EditProduct() {
                     name="gram"
                     value={formData.gram || ''}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 pr-12 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                    className="w-full px-4 py-2 pr-12 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                     placeholder="Örn: 560"
                   />
                   <span className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-medium-gray font-semibold">
@@ -412,7 +412,7 @@ export default function EditProduct() {
                   name="ayar"
                   value={formData.ayar || ''}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                 >
                   <option value="">Ayar Seçin</option>
                   {ayarlar.map((ayar) => (
@@ -433,7 +433,7 @@ export default function EditProduct() {
                   name="sira"
                   value={formData.sira || ''}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                   placeholder="Örn: 14K"
                 />
               </div>
@@ -448,7 +448,7 @@ export default function EditProduct() {
                   name="price"
                   value={formData.price || ''}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                   placeholder="Örn: 3.041.702 TL"
                 />
               </div>

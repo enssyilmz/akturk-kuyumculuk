@@ -87,7 +87,7 @@ export default function Navbar() {
                   <input
                     type="text"
                     placeholder="Ürün ara..."
-                    className="xl:w-56 lg:w-40 px-4 py-2 pr-10 bg-white text-brand-light-gray border-2 border-brand-medium-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray"
+                    className="xl:w-56 lg:w-40 px-4 py-2 pr-10 bg-white text-brand-light-gray border-2 border-brand-medium-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray"
                     autoFocus
                   />
                 )}
