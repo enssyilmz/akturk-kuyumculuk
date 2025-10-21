@@ -71,7 +71,7 @@ export default function FeaturedProducts() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
             {[...Array(12)].map((_, i) => (
-              <div key={i} className="bg-brand-black rounded-lg shadow-sm animate-pulse">
+              <div key={i} className="bg-brand-black  shadow-sm animate-pulse">
                 <div className="aspect-square bg-brand-medium-gray"></div>
                 <div className="p-2 sm:p-3 lg:p-4 space-y-2">
                   <div className="h-3 sm:h-4 bg-gray-200 rounded"></div>

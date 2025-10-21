@@ -54,7 +54,7 @@ export default function ConfirmPopup({
       />
 
       {/* Popup */}
-      <div className="relative bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 border-t-4 border-brand-gold transform transition-all duration-200 scale-100 opacity-100">
+      <div className="relative bg-white  shadow-2xl max-w-md w-full mx-4 border-t-4 border-brand-gold transform transition-all duration-200 scale-100 opacity-100">
         {/* Header */}
         <div className="px-6 py-4 border-b border-brand-light-gray">
           <h3 className="text-xl font-bold text-brand-dark-gray">{title}</h3>

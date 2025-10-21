@@ -59,7 +59,7 @@ export default function Sidebar() {
               <div className="z-10">
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="p-2 text-brand-gold hover:bg-brand-medium-gray/20 rounded-lg transition-colors"
+                  className="p-2 text-brand-gold hover:bg-brand-medium-gray/20  transition-colors"
                   aria-label="Menu"
                 >
                   {mobileMenuOpen ? (
@@ -92,7 +92,7 @@ export default function Sidebar() {
                     <input
                       type="text"
                       placeholder="Ürün ara..."
-                      className="w-32 sm:w-44 px-4 py-2 pr-10 bg-white text-brand-light-gray border-2 border-brand-medium-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray"
+                      className="w-32 sm:w-44 px-4 py-2 pr-10 bg-white text-brand-light-gray border-2 border-brand-medium-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray"
                       autoFocus
                     />
                   )}
@@ -121,7 +121,7 @@ export default function Sidebar() {
             <h2 className="text-brand-gold font-bold text-md">Menü</h2>
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-brand-gold hover:bg-brand-medium-gray/20 rounded-lg transition-colors"
+              className="p-2 text-brand-gold hover:bg-brand-medium-gray/20  transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -136,7 +136,7 @@ export default function Sidebar() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-brand-light-gray hover:text-brand-gold hover:bg-brand-dark-gray rounded-lg transition-colors font-semibold text-xs"
+                  className="block px-4 py-3 text-brand-light-gray hover:text-brand-gold hover:bg-brand-dark-gray  transition-colors font-semibold text-xs"
                 >
                   {item.name}
                 </Link>

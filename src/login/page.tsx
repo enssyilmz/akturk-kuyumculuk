@@ -105,7 +105,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
+                className="w-full px-4 py-3 border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
                 placeholder="galipsafa@admin.com"
                 required
                 disabled={loading}
@@ -125,7 +125,7 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-brand-light-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
+                className="w-full px-4 py-3 border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all text-brand-black placeholder:text-brand-medium-gray bg-gray-50"
                 placeholder="••••••••"
                 required
                 disabled={loading}
@@ -136,7 +136,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-brand-gold text-white font-bold text-lg rounded-lg hover:bg-brand-dark-gray focus:outline-none focus:ring-4 focus:ring-brand-gold focus:ring-opacity-50 transition-all duration-300 disabled:bg-brand-medium-gray disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="w-full py-4 bg-brand-gold text-white font-bold text-lg  hover:bg-brand-dark-gray focus:outline-none focus:ring-4 focus:ring-brand-gold focus:ring-opacity-50 transition-all duration-300 disabled:bg-brand-medium-gray disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               {loading ? (
                 <span className="flex items-center justify-center">
@@ -184,7 +184,7 @@ export default function LoginPage() {
 
         {/* Bilgilendirme */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-brand-light-gray bg-brand-black rounded-lg py-3 px-4">
+          <p className="text-sm text-brand-light-gray bg-brand-black  py-3 px-4">
             Admin paneline erişim için yetkili hesap gereklidir
           </p>
         </div>
