@@ -138,22 +138,22 @@ export default function AdminAddProduct() {
 
   if (authLoading || !user) {
     return (
-      <div className="min-h-screen bg-brand-dark-gray flex items-center justify-center">
+      <div className="min-h-screen bg-brand-dark-gray flex items-center justify-center px-3 sm:px-4">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-brand-gold mx-auto"></div>
-          <p className="mt-4 text-brand-light-gray font-medium">Yükleniyor...</p>
+          <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 border-b-4 border-brand-gold mx-auto"></div>
+          <p className="mt-3 sm:mt-4 text-brand-light-gray font-medium text-sm sm:text-base">Yükleniyor...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-brand-dark-gray py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-brand-dark-gray py-6 sm:py-8 lg:py-12">
+      <div className="max-w-sm sm:max-w-xl lg:max-w-4xl xl:max-w-5xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
         {/* Mesajlar */}
         {message && (
           <div
-            className={`mb-6 p-4  shadow-lg ${
+            className={`mb-4 sm:mb-6 p-3 sm:p-4 shadow-lg text-sm sm:text-base ${
               message.type === 'success'
                 ? 'bg-green-900 text-green-300 border-2 border-green-600'
                 : 'bg-red-900 text-red-300 border-2 border-red-600'
@@ -164,15 +164,15 @@ export default function AdminAddProduct() {
         )}
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="bg-white border-t-4 border-brand-gold  shadow-2xl p-8 space-y-6">
+        <form onSubmit={handleSubmit} className="bg-white border-t-4 border-brand-gold shadow-2xl p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
           {/* Görseller - Yan Yana */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Görsel 1 */}
             <div>
-              <label className="text-lg font-bold text-brand-black mb-4">
+              <label className="text-md sm:text-lg lg:text-xl xl:text-2xl font-bold text-brand-black mb-3 sm:mb-4 block">
                 1. Ürün Görseli (Ana Görsel) *
               </label>
-              <div className="flex flex-col items-start space-y-3">
+              <div className="flex flex-col items-start space-y-2 sm:space-y-3">
                 <CldUploadWidget
                   uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
                   onSuccess={handleImageUpload}
@@ -181,7 +181,7 @@ export default function AdminAddProduct() {
                     <button
                       type="button"
                       onClick={() => open()}
-                      className="px-6 py-3 btn-primary w-full"
+                      className="px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 btn-primary w-full text-xs sm:text-sm lg:text-base"
                     >
                       1. Görseli Yükle
                     </button>
@@ -189,34 +189,34 @@ export default function AdminAddProduct() {
                 </CldUploadWidget>
                 
                 {imageUrl && (
-                  <div className="relative w-full h-48">
+                  <div className="relative w-full h-25 sm:h-30 lg:h-40 xl:h-48">
                     <Image
                       src={imageUrl}
                       alt="Preview 1"
                       fill
-                      className="object-cover  border-4 border-brand-gold shadow-lg"
+                      className="object-cover border-4 border-brand-gold shadow-lg"
                     />
                     <button
                       type="button"
                       onClick={() => setImageUrl('')}
-                      className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-red-700 shadow-lg font-bold"
+                      className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center hover:bg-red-700 shadow-lg font-bold text-sm sm:text-base"
                     >
                       ×
                     </button>
                   </div>
                 )}
                 {imageUrl && (
-                  <p className="text-sm text-green-600 font-medium">✓ 1. Görsel yüklendi</p>
+                  <p className="text-sm lg:text-md xl:text-lg text-green-600 font-medium">✓ 1. Görsel yüklendi</p>
                 )}
               </div>
             </div>
 
             {/* Görsel 2 */}
             <div>
-              <label className="text-lg font-bold text-brand-black mb-4">
+              <label className="text-md sm:text-lg lg:text-xl xl:text-2xl font-bold text-brand-black mb-3 sm:mb-4 block">
                 2. Ürün Görseli (Hover Görseli) *
               </label>
-              <div className="flex flex-col items-start space-y-3">
+              <div className="flex flex-col items-start space-y-2 sm:space-y-3">
                 <CldUploadWidget
                   uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
                   onSuccess={handleImageUpload2}
@@ -225,7 +225,7 @@ export default function AdminAddProduct() {
                     <button
                       type="button"
                       onClick={() => open()}
-                      className="px-6 py-3 btn-primary w-full"
+                      className="px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 btn-primary w-full text-xs sm:text-sm lg:text-base"
                     >
                       2. Görseli Yükle
                     </button>
@@ -233,34 +233,34 @@ export default function AdminAddProduct() {
                 </CldUploadWidget>
                 
                 {imageUrl2 && (
-                  <div className="relative w-full h-48">
+                  <div className="relative w-full h-25 sm:h-30 lg:h-40 xl:h-48">
                     <Image
                       src={imageUrl2}
                       alt="Preview 2"
                       fill
-                      className="object-cover  border-4 border-brand-gold shadow-lg"
+                      className="object-cover border-4 border-brand-gold shadow-lg"
                     />
                     <button
                       type="button"
                       onClick={() => setImageUrl2('')}
-                      className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-red-700 shadow-lg font-bold"
+                      className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center hover:bg-red-700 shadow-lg font-bold text-sm sm:text-base"
                     >
                       ×
                     </button>
                   </div>
                 )}
                 {imageUrl2 && (
-                  <p className="text-sm text-green-600 font-medium">✓ 2. Görsel yüklendi</p>
+                  <p className="text-xs sm:text-sm lg:text-md xl:text-lg text-green-600 font-medium">✓ 2. Görsel yüklendi</p>
                 )}
               </div>
             </div>
           </div>
 
           {/* Grid İki Sütun */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {/* Ürün Adı */}
             <div className="md:col-span-2">
-              <label className="text-lg font-bold text-brand-black mb-4">
+              <label className="text-md sm:text-lg lg:text-xl xl:text-2xl font-bold text-brand-black mb-3 sm:mb-4 block">
                 Ürün Adı *
               </label>
               <input
@@ -268,7 +268,7 @@ export default function AdminAddProduct() {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                 placeholder="Örn: Altın Harf Yüzük"
                 required
               />
@@ -276,14 +276,14 @@ export default function AdminAddProduct() {
 
             {/* Kategori */}
             <div className="md:col-span-2">
-              <label className="text-lg font-bold text-brand-black mb-4">
+              <label className="text-md sm:text-lg lg:text-xl xl:text-2xl font-bold text-brand-black mb-3 sm:mb-4 block">
                 Kategori *
               </label>
               <select
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                 required
               >
                 {categories.map((cat) => (
@@ -296,7 +296,7 @@ export default function AdminAddProduct() {
           </div>
           {/* Açıklama */}
           <div>
-            <label className="text-lg font-bold text-brand-black mb-4">
+            <label className="text-md sm:text-lg lg:text-xl xl:text-2xl font-bold text-brand-black mb-3 sm:mb-4 block">
               Ürün Açıklaması
             </label>
             <textarea
@@ -304,23 +304,23 @@ export default function AdminAddProduct() {
               value={formData.description || ''}
               onChange={handleInputChange}
               rows={4}
-              className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+              className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
               placeholder="Ürün hakkında detaylı açıklama..."
             />
           </div>
           {/* Fiyat Tablosu Bilgileri */}
-            <h3 className="text-lg font-bold text-brand-black mb-4">Fiyat Tablo Bilgileri</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <h3 className="text-md sm:text-lg lg:text-xl xl:text-2xl font-bold text-brand-black mb-3 sm:mb-4">Fiyat Tablo Bilgileri</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {/* Renk */}
               <div>
-                <label className="block text-sm font-semibold text-brand-black mb-2">
+                <label className="block text-xs sm:text-sm font-semibold text-brand-black mb-1.5 sm:mb-2">
                   Renk
                 </label>
                 <select
                   name="renk"
                   value={formData.renk || ''}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                 >
                   <option value="">Renk Seçin</option>
                   {renkler.map((renk) => (
@@ -333,7 +333,7 @@ export default function AdminAddProduct() {
 
               {/* Gram */}
               <div>
-                <label className="block text-sm font-semibold text-brand-black mb-2">
+                <label className="block text-xs sm:text-sm font-semibold text-brand-black mb-1.5 sm:mb-2">
                   Gram (Sadece Sayı)
                 </label>
                 <div className="relative">
@@ -343,10 +343,10 @@ export default function AdminAddProduct() {
                     name="gram"
                     value={formData.gram || ''}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 pr-12 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-2.5 pr-12 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                     placeholder="Örn: 560"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-medium-gray font-semibold">
+                  <span className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 text-brand-medium-gray font-semibold text-xs sm:text-sm">
                     GR
                   </span>
                 </div>
@@ -354,14 +354,14 @@ export default function AdminAddProduct() {
 
               {/* Ayar */}
               <div>
-                <label className="block text-sm font-semibold text-brand-black mb-2">
+                <label className="block text-xs sm:text-sm font-semibold text-brand-black mb-1.5 sm:mb-2">
                   Ayar
                 </label>
                 <select
                   name="ayar"
                   value={formData.ayar || ''}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                 >
                   <option value="">Ayar Seçin</option>
                   {ayarlar.map((ayar) => (
@@ -374,7 +374,7 @@ export default function AdminAddProduct() {
 
               {/* Sıra */}
               <div>
-                <label className="block text-sm font-semibold text-brand-black mb-2">
+                <label className="block text-xs sm:text-sm font-semibold text-brand-black mb-1.5 sm:mb-2">
                   Sıra
                 </label>
                 <input
@@ -382,14 +382,14 @@ export default function AdminAddProduct() {
                   name="sira"
                   value={formData.sira || ''}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                   placeholder="Örn: 14K"
                 />
               </div>
 
               {/* Fiyat */}
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold text-brand-black mb-2">
+              <div className="sm:col-span-2">
+                <label className="block text-xs sm:text-sm font-semibold text-brand-black mb-1.5 sm:mb-2">
                   Fiyat
                 </label>
                 <input
@@ -397,24 +397,24 @@ export default function AdminAddProduct() {
                   name="price"
                   value={formData.price || ''}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-black border-2 border-brand-light-gray  focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                   placeholder="Örn: 3.041.702 TL"
                 />
               </div>
             </div>
             {/* Submit Butonu */}
-          <div className="flex justify-end space-x-4 pt-4">
+          <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 lg:gap-4 pt-3 sm:pt-4">
             <Link
               href="/admin"
-              className="px-6 py-3 btn-warning"
+              className="px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 btn-warning text-sm sm:text-base lg:text-lg font-bold text-center"
             >
               İptal
             </Link>
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-3 btn-primary"
-            >
+                className="px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 btn-primary text-sm sm:text-base lg:text-lg font-bold text-center"
+              >
               {loading ? 'Ekleniyor...' : 'Ürün Ekle'}
             </button>
           </div>
