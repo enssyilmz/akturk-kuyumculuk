@@ -1,43 +1,22 @@
-"use client";
-
 import { Award, Shield, Clock, Gem, Calculator, Package, Heart, Users } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function NedenAkturkKuyumculuk() {
   return (
     <div className="min-h-screen bg-brand-black pt-8 sm:pt-12 lg:pt-30 pb-8 sm:pb-12 lg:pb-16">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         {/* Başlık */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
-        >
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-serif text-brand-light-gray mb-2 sm:mb-3 lg:mb-4">
             Neden Aktürk Kuyumculuk?
           </h1>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "auto" }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-20 sm:w-24 lg:w-32 h-0.5 sm:h-1 bg-brand-gold mx-auto mb-3 sm:mb-4 lg:mb-6"
-          ></motion.div>
+          <div className="w-20 sm:w-24 lg:w-32 h-0.5 sm:h-1 bg-brand-gold mx-auto mb-3 sm:mb-4 lg:mb-6"></div>
           <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-brand-medium-gray max-w-3xl mx-auto px-4">
             Güven, kalite ve mükemmelliğin buluştuğu noktada, sizin için en iyisini sunuyoruz
           </p>
-        </motion.div>
+        </div>
 
         {/* Özel Deneyim */}
-        <motion.section
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
-          className="mb-10 sm:mb-12 lg:mb-20"
-        >
+        <section className="mb-10 sm:mb-12 lg:mb-20">
           <div className="bg-brand-dark-gray  p-4 sm:p-6 lg:p-8 xl:p-12 border border-brand-medium-gray shadow-xl">
             <div className="flex items-center mb-3 sm:mb-4 lg:mb-6">
               <Heart className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-brand-gold mr-2 sm:mr-3 lg:mr-4" />
@@ -62,16 +41,10 @@ export default function NedenAkturkKuyumculuk() {
               </p>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Ürün Kimliği */}
-        <motion.section
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
-          className="mb-10 sm:mb-12 lg:mb-20"
-        >
+        <section className="mb-10 sm:mb-12 lg:mb-20">
           <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8 xl:p-12 border border-brand-medium-gray shadow-xl">
             <div className="flex items-center mb-3 sm:mb-4 lg:mb-6">
               <Shield className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-brand-gold mr-2 sm:mr-3 lg:mr-4" />
@@ -121,28 +94,16 @@ export default function NedenAkturkKuyumculuk() {
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Ayrıcalıklar Grid */}
         <section className="mb-10 sm:mb-12 lg:mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-serif text-brand-light-gray text-center mb-6 sm:mb-8 lg:mb-12"
-          >
+          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-serif text-brand-light-gray text-center mb-6 sm:mb-8 lg:mb-12">
             Aktürk Kuyumculuk Ayrıcalıkları
-          </motion.h2>
+          </h2>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Ayar Garantisi */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0 }}
-              className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
-            >
+            <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group">
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
                 <Award className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-brand-gold group-hover:scale-110 transition-transform" />
               </div>
@@ -154,16 +115,10 @@ export default function NedenAkturkKuyumculuk() {
                 laboratuvarda analize tabi tutarak ayar garantili üretim yapmaktayız. Ürün kimliği numaranızla 
                 analiz sonuçlarını görebilirsiniz.
               </p>
-            </motion.div>
+            </div>
 
             {/* Ömür Boyu Bakım */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
-            >
+            <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group">
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
                 <Clock className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-brand-gold group-hover:scale-110 transition-transform" />
               </div>
@@ -174,16 +129,10 @@ export default function NedenAkturkKuyumculuk() {
                 Kullanıcı hatalarından oluşabilen ürün deformasyonlarında dahi ücretsiz bakım ve onarım imkanları 
                 sunuyoruz. Kilit problemi, form bozulması gibi problemlerde ücretsiz bakım ve onarım sağlamaktayız.
               </p>
-            </motion.div>
+            </div>
 
             {/* Kalite Güvencesi */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
-            >
+            <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group">
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
                 <Gem className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-brand-gold group-hover:scale-110 transition-transform" />
               </div>
@@ -194,16 +143,10 @@ export default function NedenAkturkKuyumculuk() {
                 Yıllardır tecrübeli, seçkin ustalarımız tarafından üretilen ürünlerimiz kalite kursuna tabii tutulmuştur. 
                 Ustalarımız kalite kontrol eğitimlerine tabi tutularak çalışmaktadırlar.
               </p>
-            </motion.div>
+            </div>
 
             {/* Patentli Teknik */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
-            >
+            <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group">
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
                 <Calculator className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-brand-gold group-hover:scale-110 transition-transform" />
               </div>
@@ -214,16 +157,10 @@ export default function NedenAkturkKuyumculuk() {
                 Üretim aşamasında kullandığımız ileri teknoloji buluşlar sayesinde piyasa standartlarının en hafif 
                 ve en kaliteli ürünlerini üretiyoruz. Kalitemizi standart bir hale getirdik.
               </p>
-            </motion.div>
+            </div>
 
             {/* Özel Tasarım */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
-            >
+            <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group">
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
                 <Package className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-brand-gold group-hover:scale-110 transition-transform" />
               </div>
@@ -234,16 +171,10 @@ export default function NedenAkturkKuyumculuk() {
                 Müşterilerimizin isteklerine göre özel tasarım ve üretim hizmeti sunuyoruz. Hayalinizdeki mücevheri 
                 birlikte tasarlayıp, size özel üretiyoruz.
               </p>
-            </motion.div>
+            </div>
 
             {/* Uzman Kadro */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
-            >
+            <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group">
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
                 <Users className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 text-brand-gold group-hover:scale-110 transition-transform" />
               </div>
@@ -254,18 +185,12 @@ export default function NedenAkturkKuyumculuk() {
                 Alanında uzman, deneyimli ustalarımız ve danışmanlarımızla size en iyi hizmeti sunmak için çalışıyoruz. 
                 Her aşamada profesyonel destek sağlamaktayız.
               </p>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Alt Bilgi */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center bg-brand-dark-gray p-6 sm:p-8 lg:p-12 border border-brand-gold"
-        >
+        <section className="text-center bg-brand-dark-gray p-6 sm:p-8 lg:p-12 border border-brand-gold">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif text-brand-light-gray mb-3 sm:mb-4 lg:mb-6">
             Yaşayan Efsanenizi Bizimle Yaratın
           </h2>
@@ -281,7 +206,7 @@ export default function NedenAkturkKuyumculuk() {
               Bizi Arayın: (0531) 283 19 34
             </a>
           </div>
-        </motion.section>
+        </section>
       </div>
     </div>
   );
