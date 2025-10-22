@@ -136,7 +136,7 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen bg-brand-dark-gray flex items-center justify-center px-3 sm:px-4">
         <div className="text-center">
-          <div className="whileInView-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 border-b-4 border-brand-gold mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 border-b-4 border-brand-gold mx-auto"></div>
           <p className="mt-3 sm:mt-4 text-brand-light-gray font-medium text-sm sm:text-base">Yükleniyor...</p>
         </div>
       </div>
@@ -301,7 +301,7 @@ export default function AdminPage() {
                             title="Sil"
                           >
                             {deletingId === product.id ? (
-                              <div className="whileInView-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-red-500"></div>
+                              <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-red-500"></div>
                             ) : (
                               <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                             )}
