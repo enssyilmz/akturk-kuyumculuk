@@ -65,7 +65,7 @@ export default function LoginPage() {
     return (
       <div className="min-h-screen bg-brand-dark-gray flex items-center justify-center px-3 sm:px-4">
         <div className="text-center">
-          <div className="whileInView-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 border-b-4 border-brand-gold mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 border-b-4 border-brand-gold mx-auto"></div>
           <p className="mt-3 sm:mt-4 text-brand-medium-gray font-medium text-sm sm:text-base">Kontrol ediliyor...</p>
         </div>
       </div>
@@ -148,7 +148,7 @@ export default function LoginPage() {
               {loading ? (
                 <span className="flex items-center justify-center">
                   <svg
-                    className="whileInView-spin -ml-1 mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 text-white"
+                    className="animate-spin -ml-1 mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 text-white"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"

@@ -4,7 +4,6 @@ import { collection, getDocs } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion';
 
 type SortOption = 'recommended' | 'name-asc' | 'name-desc';
 
@@ -74,20 +73,8 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-brand-black">
       <div className="container mx-auto px-3 sm:px-4 lg:px-8 pt-8 pt-12 lg:pt-30 pb-8 xs:pb-12">
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
-          className="text-xl sm:text-xl lg:text-3xl xl:text-4xl font-bold text-brand-gold text-center mb-6 sm:mb-8"
-        >KÜPE</motion.h1>
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex items-center justify-end mb-4 sm:mb-6 lg:mb-8"
-        >          
+        <h1 className="text-xl sm:text-xl lg:text-3xl xl:text-4xl font-bold text-brand-gold text-center mb-6 sm:mb-8">KÜPE</h1>
+        <div className="flex items-center justify-end mb-4 sm:mb-6 lg:mb-8">          
           <div className="flex items-center gap-2">
             <label htmlFor="sort" className="text-brand-light-gray text-xs sm:text-sm lg:text-base">Sırala:</label>
             <select
@@ -101,7 +88,7 @@ export default function Page() {
               <option value="name-desc">İsme Göre (Z-A)</option>
             </select>
           </div>
-        </motion.div>
+        </div>
 
         {sortedProducts.length === 0 ? (
           <div className="text-center py-8 sm:py-12">
@@ -109,14 +96,7 @@ export default function Page() {
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-            {sortedProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, scale: 0.8, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 100 }}
-              >
+            {sortedProducts.map((product) => (
               <Link 
                 key={product.id}
                 href={`/urunler/kupe/${product.id}`}
@@ -150,7 +130,6 @@ export default function Page() {
 
                 </div>
               </Link>
-              </motion.div>
             ))}
           </div>
         )}

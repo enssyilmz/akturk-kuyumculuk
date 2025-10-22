@@ -1,8 +1,5 @@
-"use client";
-
 import { Flame, Cog, TestTube, Hammer, Sparkles, Medal } from 'lucide-react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 
 export default function Uretim() {
   const productionSteps = [
@@ -66,36 +63,18 @@ export default function Uretim() {
     <div className="min-h-screen bg-brand-black pt-8 pt-12 lg:pt-30 lg:pb-16">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         {/* Başlık */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
-        >
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-serif text-brand-light-gray mb-2 sm:mb-3 lg:mb-4">
             Üretim Aşaması
           </h1>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "auto" }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-20 sm:w-24 lg:w-32 h-0.5 sm:h-1 bg-brand-gold mx-auto mb-3 sm:mb-4 lg:mb-6"
-          ></motion.div>
+          <div className="w-20 sm:w-24 lg:w-32 h-0.5 sm:h-1 bg-brand-gold mx-auto mb-3 sm:mb-4 lg:mb-6"></div>
           <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-brand-medium-gray max-w-3xl mx-auto px-4">
             Her bir ürünümüz, ustalık ve teknolojinin mükemmel uyumuyla hayat buluyor
           </p>
-        </motion.div>
+        </div>
 
         {/* Ayar Seçenekleri */}
-        <motion.section
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-12 lg:mb-16"
-        >
+        <section className="mb-8 sm:mb-12 lg:mb-16">
           <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8 border border-brand-medium-gray">
             <div className="flex items-center justify-center mb-3 sm:mb-4 lg:mb-6">
               <Medal className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-brand-gold mr-2 sm:mr-3 lg:mr-4" />
@@ -118,29 +97,19 @@ export default function Uretim() {
               müşterilerimizden talep edilen ayarı ayarlayıp işleme tabi tutarız.
             </p>
           </div>
-        </motion.section>
+        </section>
 
         {/* Üretim Aşamaları */}
         <section className="mb-8 sm:mb-12 lg:mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-serif text-brand-light-gray text-center mb-6 sm:mb-8 lg:mb-12"
-          >
+          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-serif text-brand-light-gray text-center mb-6 sm:mb-8 lg:mb-12">
             Üretim Süreci
-          </motion.h2>
+          </h2>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {productionSteps.map((step, index) => {
               const IconComponent = step.icon;
               return (
-                <motion.div
+                <div 
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8, y: 30 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group relative"
                 >
                   {/* Numara Badge */}
@@ -167,20 +136,14 @@ export default function Uretim() {
                   <p className="text-brand-medium-gray text-center leading-relaxed text-xs sm:text-sm lg:text-base">
                     {step.description}
                   </p>
-                </motion.div>
+                </div>
               );
             })}
           </div>
         </section>
 
         {/* Atölye Aşaması */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-12 lg:mb-16"
-        >
+        <section className="mb-8 sm:mb-12 lg:mb-16">
           <div className="bg-brand-dark-gray  sm: lg:rounded-2xl p-4 sm:p-6 lg:p-8 xl:p-12 border border-brand-medium-gray">
             <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-serif text-brand-light-gray text-center mb-6 sm:mb-8 lg:mb-12">
               Atölye Aşaması
@@ -193,14 +156,7 @@ export default function Uretim() {
               {workshopSteps.map((step, index) => {
                 const IconComponent = step.icon;
                 return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.5, delay: index * 0.15 }}
-                    className="bg-brand-dark-gray p-3 sm:p-4 lg:p-6  sm: border border-brand-medium-gray"
-                  >
+                  <div key={index} className="bg-brand-dark-gray p-3 sm:p-4 lg:p-6  sm: border border-brand-medium-gray">
                     <div className="flex justify-center mb-2 sm:mb-3 lg:mb-4">
                       <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-brand-gold" />
                     </div>
@@ -210,7 +166,7 @@ export default function Uretim() {
                     <p className="text-brand-medium-gray text-center leading-relaxed text-xs sm:text-sm lg:text-base">
                       {step.description}
                     </p>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
@@ -231,18 +187,12 @@ export default function Uretim() {
               </p>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Ürün Kimliği ve Güvence */}
         <section className="mb-8 sm:mb-12 lg:mb-16">
           <div className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
-              className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-gold"
-            >
+            <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-gold">
               <div className="flex items-center mb-3 sm:mb-4 lg:mb-6">
                 <TestTube className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-brand-gold mr-2 sm:mr-3 lg:mr-4" />
                 <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-serif text-brand-light-gray">
@@ -270,15 +220,9 @@ export default function Uretim() {
                   Sadece kendilerine özel üretildiğini görebilir
                 </li>
               </ul>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
-              className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-gold"
-            >
+            <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-gold">
               <div className="flex items-center mb-3 sm:mb-4 lg:mb-6">
                 <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-brand-gold mr-2 sm:mr-3 lg:mr-4" />
                 <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-serif text-brand-light-gray">
@@ -306,18 +250,12 @@ export default function Uretim() {
                   Ömür boyu bakım ve onarım desteği
                 </li>
               </ul>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Call to Action */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center bg-brand-dark-gray p-6 sm:p-8 lg:p-12 border-2 border-brand-gold"
-        >
+        <section className="text-center bg-brand-dark-gray p-6 sm:p-8 lg:p-12 border-2 border-brand-gold">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif text-brand-light-gray mb-3 sm:mb-4 lg:mb-6">
             Sizin İçin Üretiyoruz
           </h2>
@@ -339,7 +277,7 @@ export default function Uretim() {
               Ürünleri İnceleyin
             </Link>
           </div>
-        </motion.section>
+        </section>
       </div>
     </div>
   );
