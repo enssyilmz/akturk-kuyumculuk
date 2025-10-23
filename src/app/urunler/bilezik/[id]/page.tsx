@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { doc, getDoc, Timestamp } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 interface Product {
   id: string
@@ -78,11 +79,21 @@ export default function ProductDetailPage() {
     <div className="min-h-screen bg-brand-black pt-8 pt-12 lg:pt-30">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-          <div className="space-y-3 sm:space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
+            className="space-y-3 sm:space-y-4"
+          >
             <div className={`grid ${images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3 sm:gap-4`}>
               {images.map((image, index) => (
-                <button
+                <motion.button
                   key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ delay: index * 0.2, duration: 0.5 }}
                   onClick={() => openLightbox(image)}
                   className="relative h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] xl:h-[600px] bg-brand-dark-gray ring-1 ring-brand-gold overflow-hidden group cursor-zoom-in"
                 >
@@ -92,12 +103,18 @@ export default function ProductDetailPage() {
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                </button>
+                </motion.button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="space-y-4 sm:space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
+            className="space-y-4 sm:space-y-6"
+          >
             <div>
               <h1 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-brand-gold mb-2 sm:mb-3">
                 {product.name}
@@ -158,7 +175,7 @@ export default function ProductDetailPage() {
                 Fiyat bilgisi ve detaylar için bizimle iletişime geçin
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {lightboxOpen && (

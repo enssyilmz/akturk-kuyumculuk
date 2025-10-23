@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import Image from 'next/image';
@@ -71,7 +72,7 @@ export default function FeaturedProducts() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
             {[...Array(12)].map((_, i) => (
-              <div key={i} className="bg-brand-black  shadow-sm animate-pulse">
+              <div key={i} className="bg-brand-black  shadow-sm whileInView-pulse">
                 <div className="aspect-square bg-brand-medium-gray"></div>
                 <div className="p-2 sm:p-3 lg:p-4 space-y-2">
                   <div className="h-3 sm:h-4 bg-gray-200 rounded"></div>
@@ -89,21 +90,39 @@ export default function FeaturedProducts() {
     <div className="py-8 sm:py-12 lg:py-16 bg-brand-black">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         {/* Başlık */}
-        <div className="text-center mb-6 sm:mb-8 lg:mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.7, type: "spring", stiffness: 80 }}
+          className="text-center mb-6 sm:mb-8 lg:mb-12"
+        >
           <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-serif text-brand-light-gray mb-2">
             Senin Yaşayan Efsanen
           </h2>
-          <div className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-brand-gold mx-auto"></div>
-        </div>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "auto" }}
+            viewport={{ once: false }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="w-16 sm:w-20 lg:w-24 h-0.5 sm:h-1 bg-brand-gold mx-auto"
+          ></motion.div>
+        </motion.div>
 
         {/* Ürün Kartları Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-          {products.map((product) => (
-            <Link
+          {products.map((product, index) => (
+            <motion.div
               key={product.id}
-              href={`/urunler/${product.collectionName}/${product.id}`}
-              className="group bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer group transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50"
+              initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
+              whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ delay: (index % 8) * 0.1, duration: 0.6, type: "spring", stiffness: 100 }}
             >
+              <Link
+                href={`/urunler/${product.collectionName}/${product.id}`}
+                className="block group bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50"
+              >
               {/* Ürün Görseli */}
                 <div className="relative h-40 sm:h-60 lg:h-80 xl:h-100 overflow-hidden">
                   <Image
@@ -135,7 +154,8 @@ export default function FeaturedProducts() {
                   </p>
                 )}
               </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
