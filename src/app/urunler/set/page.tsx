@@ -95,7 +95,7 @@ export default function Page() {
               id="sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="bg-brand-dark-gray text-brand-light-gray border border-brand-gold px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 text-xs sm:text-sm lg:text-base focus:outline-none rounded"
+              className="bg-brand-dark-gray text-brand-light-gray border border-brand-gold px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 text-xs sm:text-sm lg:text-base focus:outline-none"
             >
               <option value="recommended">Önerilen</option>
               <option value="name-asc">İsme Göre (A-Z)</option>
@@ -121,7 +121,7 @@ export default function Page() {
               <Link 
                 key={product.id}
                 href={`/urunler/set/${product.id}`}
-                className="bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer group transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50"
+                className="block bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer group transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50"
               >
                 <div className="relative h-40 sm:h-60 lg:h-80 xl:h-100 overflow-hidden">
                   <Image
