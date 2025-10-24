@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -21,15 +21,17 @@ interface GoldData {
   altinGumus: CurrencyData;
 }
 
+// Cache yapılandırmasını bileşen dışında tanımlayarak
+// değişmeyen sabitleri dependency dizilerinden çıkarıyoruz
+const CACHE_KEY = 'gold_prices_cache';
+const CACHE_DURATION = 60 * 60 * 1000; // 1 saat (3.600.000 ms)
+
 export default function AltinFiyatlari() {
   const [goldData, setGoldData] = useState<GoldData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const CACHE_KEY = 'gold_prices_cache';
-  const CACHE_DURATION = 60 * 60 * 1000; // 1 saat (3.600.000 ms)
-
-  const fetchGoldPrices = async (forceRefresh = false) => {
+  const fetchGoldPrices = useCallback(async (forceRefresh = false) => {
     try {
       // Cache kontrolü - forceRefresh yoksa cache'i kontrol et
       if (!forceRefresh) {
@@ -77,16 +79,13 @@ export default function AltinFiyatlari() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchGoldPrices();
-    
-    // Her 1 saatte bir güncelle (3.600.000 ms)
     const interval = setInterval(() => fetchGoldPrices(true), CACHE_DURATION);
-    
     return () => clearInterval(interval);
-  }, []);
+  }, [fetchGoldPrices]);
 
   const formatPrice = (price: number) => {
     if (!price || isNaN(price)) return '0.00';
