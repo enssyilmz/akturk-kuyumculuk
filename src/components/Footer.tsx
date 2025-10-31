@@ -1,13 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
-import { Mail, MapPin, Clock, Instagram, Facebook } from 'lucide-react';
-
-const LeafletMap = dynamic(() => import('./LeafletMap'), { ssr: false });
+import { Mail, MapPin, Clock, Instagram , Phone} from 'lucide-react';
 
 export default function Footer() {
-  const position: [number, number] = [40.994283, 39.745092];
-
   return (
     <footer className="bg-brand-dark-gray mt-6 sm:mt-8 lg:mt-12 xl:mt-16">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-4 sm:py-6 lg:py-8 xl:py-10 border-t-2 border-brand-gold">
@@ -23,16 +18,21 @@ export default function Footer() {
           >
             <h3 className="text-sm sm:text-md lg:text-xl xl:text-2xl font-bold text-brand-gold mb-2 sm:mb-3 lg:mb-4">Konumumuz</h3>
             <div className="relative z-0 h-[150px] sm:h-[180px] lg:h-[200px] xl:h-[220px] ring-2 ring-brand-gold overflow-hidden rounded-sm mb-3">
-              <LeafletMap />
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!3m2!1str!2str!4v1761934374301!5m2!1str!2str!6m8!1m7!1s0xgzFnIueSh2jJgg3B_kAQ!2m2!1d41.00639157716616!2d39.72607529600786!3f188.43383259017082!4f-16.690193043676757!5f0.43279263888731334" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true}
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0"
+              />
             </div>
-            <a
-              href={`https://www.google.com/maps?q=${position[0]},${position[1]}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block btn-primary px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 text-[10px] sm:text-xs lg:text-sm xl:text-base"
-            >
-              Google Maps&apos;te Aç
-            </a>
+            <div className="flex items-start gap-1.5 sm:gap-2 lg:gap-2.5 text-brand-light-gray text-[10px] sm:text-xs lg:text-sm xl:text-base">
+                  <MapPin className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex-shrink-0 mt-0.5" />
+                  <span>Kemerkaya Mah. Kunduracılar Cad. Çarşı Sok. Çarşı Han Kat:2 Ortahisar / Trabzon</span>
+                  </div>
           </motion.div>
 
           {/* Orta - Çalışma Saatleri */}
@@ -72,16 +72,20 @@ export default function Footer() {
               <h3 className="text-sm sm:text-md lg:text-xl xl:text-2xl font-bold text-brand-gold mb-2 sm:mb-3 lg:mb-4">İletişim</h3>
               <div className="space-y-1 sm:space-y-1.5 lg:space-y-2">
                 <a
-                  href="mailto:akturk@kuyumculuk.com"
+                  href="mailto:official@akturkkuyumculuk.com"
                   className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 text-brand-light-gray hover:text-brand-gold transition-colors text-[10px] sm:text-xs lg:text-sm xl:text-base"
                 >
                   <Mail className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex-shrink-0" />
-                  <span>akturk@kuyumculuk.com</span>
+                  <span>official@akturkkuyumculuk.com</span>
                 </a>
-                <div className="flex items-start gap-1.5 sm:gap-2 lg:gap-2.5 text-brand-light-gray text-[10px] sm:text-xs lg:text-sm xl:text-base">
-                  <MapPin className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex-shrink-0 mt-0.5" />
-                  <span>Kemerkaya Mah. Kunduracılar Cad. Çarşı Sok. Çarşı Han Kat:2 Ortahisar / Trabzon</span>
-                </div>
+                <a href="tel:05312831934" className="flex items-center space-x-2 text-brand-light-gray hover:text-brand-gold transition-colors">
+                <Phone className="w-4 h-4" />
+                <span>(0531) 283 19 34</span>
+              </a>
+              <a href="tel:04623321661" className="flex items-center space-x-2 text-brand-light-gray hover:text-brand-gold transition-colors">
+                <Phone className="w-4 h-4" />
+                <span>0462 332 16 61</span>
+              </a>
               </div>
             </div>
 
@@ -89,20 +93,12 @@ export default function Footer() {
               <h3 className="text-sm sm:text-md lg:text-xl xl:text-2xl font-bold text-brand-gold mb-2 sm:mb-3 lg:mb-4">Bizi Takip Edin</h3>
               <div className="flex gap-2 sm:gap-3 lg:gap-4">
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/akturk_kuyumculuk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-1.5 sm:p-2 lg:p-2.5 xl:p-3 bg-brand-dark-gray ring-1 ring-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors rounded-sm"
                 >
                   <Instagram className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6" />
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 sm:p-2 lg:p-2.5 xl:p-3 bg-brand-dark-gray ring-1 ring-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors rounded-sm"
-                >
-                  <Facebook className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6" />
                 </a>
                 <a
                   href="https://wa.me/905312831934"
