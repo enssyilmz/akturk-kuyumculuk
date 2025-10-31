@@ -264,7 +264,7 @@ export default function ProductDetailPage() {
             {/* İletişim Butonu */}
             <div className="border-t border-brand-gold/30 pt-4 sm:pt-6">
               <a
-                href="https://wa.me/905XXXXXXXXX" // WhatsApp numaranızı buraya ekleyin
+                href="https://wa.me/905312831934" // WhatsApp numaranızı buraya ekleyin
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full btn-primary text-brand-black py-3 sm:py-4 px-4 sm:px-6 text-sm sm:text-base lg:text-lg"
