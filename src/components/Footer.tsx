@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-brand-dark-gray mt-6 sm:mt-8 lg:mt-12 xl:mt-16">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-4 sm:py-6 lg:py-8 xl:py-10 border-t-2 border-brand-gold">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 xl:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 xl:gap-10">
           
           {/* Sol - Konum */}
           <motion.div
@@ -78,12 +78,12 @@ export default function Footer() {
                   <Mail className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex-shrink-0" />
                   <span>official@akturkkuyumculuk.com</span>
                 </a>
-                <a href="tel:05312831934" className="flex items-center space-x-2 text-brand-light-gray hover:text-brand-gold transition-colors">
-                <Phone className="w-4 h-4" />
-                <span>(0531) 283 19 34</span>
-              </a>
-              <a href="tel:04623321661" className="flex items-center space-x-2 text-brand-light-gray hover:text-brand-gold transition-colors">
-                <Phone className="w-4 h-4" />
+                <a href="tel:05312831934" className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 text-brand-light-gray hover:text-brand-gold transition-colors text-[10px] sm:text-xs lg:text-sm xl:text-base">
+                  <Phone className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex-shrink-0" />
+                  <span>(0531) 283 19 34</span>
+                </a>
+              <a href="tel:04623321661" className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 text-brand-light-gray hover:text-brand-gold transition-colors text-[10px] sm:text-xs lg:text-sm xl:text-base">
+                <Phone className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex-shrink-0" />
                 <span>0462 332 16 61</span>
               </a>
               </div>
