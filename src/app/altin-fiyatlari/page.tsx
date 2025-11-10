@@ -324,60 +324,7 @@ export default function AltinFiyatlari() {
             </div>
           </div>
         </motion.div>
-
-        {/* Altın Çevirici */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-brand-dark-gray border border-brand-medium-gray p-6"
-        >
-          <h3 className="text-lg sm:text-xl font-serif text-brand-gold mb-4">
-            ALTIN ÇEVİRİCİ
-            <span className="block text-xs text-brand-medium-gray mt-1">(Bilgi içindir)</span>
-          </h3>
-          <div className="grid sm:grid-cols-3 gap-4">
-            <input
-              type="number"
-              defaultValue={1}
-              min="0"
-              step="0.01"
-              className="text-sm sm:text-md lg:text-lg xl:text-xl bg-brand-black border border-brand-gold/30 text-brand-light-gray px-4 py-3 rounded focus:outline-none focus:border-brand-gold text-center"
-              placeholder="Miktar"
-            />
-            <select className="text-sm sm:text-md lg:text-lg xl:text-xl bg-brand-black border border-brand-gold/30 text-brand-light-gray px-4 py-3 rounded focus:outline-none focus:border-brand-gold">
-              <option>GRAM</option>
-              <option>ONS</option>
-              <option>KG</option>
-            </select>
-            <select className="text-sm sm:text-md lg:text-lg xl:text-xl bg-brand-black border border-brand-gold/30 text-brand-light-gray px-4 py-3 rounded focus:outline-none focus:border-brand-gold">
-              <option>GRAM ALTIN</option>
-              <option>22 AYAR</option>
-              <option>18 AYAR</option>
-              <option>14 AYAR</option>
-            </select>
-          </div>
-          
-          {/* Sonuç Alanı */}
-          {goldData && (
-            <div className="mt-4 p-4 bg-brand-gold/10 border border-brand-gold/30 rounded">
-              <div className="text-center">
-                <div className="text-sm sm:text-md lg:text-lg xl:text-xl text-brand-medium-gray mb-1">Alış Fiyatı</div>
-                <div className="text-sm sm:text-md lg:text-lg xl:text-xl font-bold text-brand-gold">
-                  ₺{formatPrice(goldData.gramAltin.buying)} TRY
-                </div>
-              </div>
-              <div className="text-center mt-3">
-                <div className="text-sm sm:text-md lg:text-lg xl:text-xl text-brand-medium-gray mb-1">Satış Fiyatı</div>
-                <div className="text-sm sm:text-md lg:text-lg xl:text-xl font-bold text-brand-gold">
-                  ₺{formatPrice(goldData.gramAltin.selling)} TRY
-                </div>
-              </div>
-            </div>
-          )}
-        </motion.div>
-
+        
         {/* Bilgi Notu */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
