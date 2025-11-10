@@ -73,7 +73,7 @@ export default function YuzukPage() {
 
   return (
     <div className="min-h-screen bg-brand-black">
-      <div className="container mx-auto px-3 sm:px-4 lg:px-8 pt-8 pt-12 lg:pt-30 pb-8 xs:pb-12">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-8 pt-8 pt-12 lg:pt-30 ">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
