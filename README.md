@@ -1,20 +1,10 @@
-# 🏆 Aktürk Kuyumculuk - E-Ticaret Platformu
+# Aktürk Kuyumculuk - E-Ticaret Platformu
 
 Modern ve kullanıcı dostu kuyumculuk e-ticaret platformu. Next.js 15, TypeScript, Firebase ve Framer Motion ile geliştirilmiştir.
 
-## 📋 İçindekiler
+## Özellikler
 
-- [Özellikler](#-özellikler)
-- [Teknoloji Yığını](#-teknoloji-yığını)
-- [Proje Yapısı](#-proje-yapısı)
-- [Kurulum](#-kurulum)
-- [Environment Variables](#-environment-variables)
-- [Geliştirme](#-geliştirme)
-- [Dağıtım](#-dağıtım)
-
-## ✨ Özellikler
-
-### 🎨 UI/UX
+### UI/UX
 - Modern ve responsive tasarım (mobil, tablet, desktop)
 - Framer Motion ile akıcı animasyonlar
 - Scroll bazlı animasyonlar (viewport tracking)
@@ -22,7 +12,7 @@ Modern ve kullanıcı dostu kuyumculuk e-ticaret platformu. Next.js 15, TypeScri
 - Interaktif hamburger menü
 - Dinamik arama özelliği
 
-### 💍 Ürün Yönetimi
+### Ürün Yönetimi
 - 6 farklı ürün kategorisi:
   - Bileklik
   - Bilezik
@@ -35,26 +25,24 @@ Modern ve kullanıcı dostu kuyumculuk e-ticaret platformu. Next.js 15, TypeScri
 - Ürün filtreleme ve sıralama
 - Dinamik ürün ekleme/düzenleme
 
-### 🔐 Admin Paneli
+### Admin Paneli
 - Firebase Authentication ile güvenli giriş
 - Ürün ekleme/düzenleme/silme
 - Cloudinary entegrasyonu ile resim yükleme
 - Gerçek zamanlı ürün yönetimi
 
-### 💰 Altın Fiyatları
+### Altın Fiyatları
 - Anlık altın fiyatları (Gold API entegrasyonu)
-- 10 saniyede bir otomatik güncelleme
+- 6000 saniyede bir otomatik güncelleme
 - Fiyat değişim göstergesi (yeşil/kırmızı)
-- USD → TRY dönüşümü
-- Altın çevirici hesaplama aracı
 
-### 📍 Diğer Özellikler
-- OpenStreetMap entegrasyonu (Leaflet.js)
+### Diğer Özellikler
+- GoogleMaps entegrasyonu
 - İletişim formu
 - SSR optimizasyonu
 - SEO dostu yapı
 
-## 🛠 Teknoloji Yığını
+## Teknoloji Yığını
 
 ### Frontend
 - **Framework:** Next.js 15.5.6 (App Router)
@@ -69,69 +57,12 @@ Modern ve kullanıcı dostu kuyumculuk e-ticaret platformu. Next.js 15, TypeScri
 - **Dosya Depolama:** Cloudinary
 - **API:** Next.js API Routes
 
-### Harita & Lokasyon
-- **Harita:** React Leaflet 4.2.1
-- **Leaflet Core:** 1.9.4
-
 ### Geliştirme Araçları
 - **Linting:** ESLint 9.x
 - **Kod Formatı:** Prettier (ESLint entegreli)
 - **Tip Kontrolü:** TypeScript
 
-## 📁 Proje Yapısı
-
-```
-akturk-kuyumculuk/
-├── src/
-│   ├── app/                          # Next.js App Router
-│   │   ├── admin/                    # Admin panel sayfaları
-│   │   │   ├── page.tsx             # Admin dashboard
-│   │   │   ├── urun-ekle/           # Ürün ekleme
-│   │   │   └── urun-duzenle/[id]/   # Ürün düzenleme
-│   │   ├── altin-fiyatlari/         # Altın fiyatları sayfası
-│   │   ├── api/                      # API Routes
-│   │   │   └── gold-prices/         # Altın fiyatları API
-│   │   ├── giris/                    # Giriş sayfası
-│   │   ├── neden-akturk-kuyumculuk/ # Hakkımızda sayfası
-│   │   ├── uretim/                   # Üretim süreci sayfası
-│   │   ├── urunler/                  # Ürün sayfaları
-│   │   │   ├── bileklik/
-│   │   │   ├── bilezik/
-│   │   │   ├── kolye/
-│   │   │   ├── kupe/
-│   │   │   ├── set/
-│   │   │   └── yuzuk/
-│   │   ├── globals.css              # Global stiller
-│   │   ├── layout.tsx               # Root layout
-│   │   └── page.tsx                 # Ana sayfa
-│   ├── components/                   # React bileşenleri
-│   │   ├── ConfirmPopup.tsx         # Onay popup
-│   │   ├── FeaturedProducts.tsx     # Öne çıkan ürünler
-│   │   ├── FirebaseProvider.tsx     # Firebase context
-│   │   ├── Footer.tsx               # Footer bileşeni
-│   │   ├── HeroSlider.tsx           # Ana sayfa slider
-│   │   ├── LayoutContent.tsx        # Layout wrapper
-│   │   ├── LeafletMap.tsx           # Harita bileşeni
-│   │   ├── Navbar.tsx               # Navigasyon barı
-│   │   ├── SearchBox.tsx            # Arama kutusu
-│   │   └── Sidebar.tsx              # Mobil menü
-│   ├── hooks/                        # Custom hooks
-│   │   └── useAuth.ts               # Kimlik doğrulama hook
-│   ├── lib/                          # Utility fonksiyonlar
-│   │   ├── cloudinary.ts            # Cloudinary config
-│   │   └── firebase.ts              # Firebase config
-│   └── middleware.ts                 # Next.js middleware
-├── public/                           # Statik dosyalar
-│   └── images/                       # Resim dosyaları
-├── .env.local                        # Environment variables (gizli)
-├── .env.local.example               # Environment örnek dosya
-├── next.config.ts                    # Next.js yapılandırma
-├── tailwind.config.ts               # Tailwind yapılandırma
-├── tsconfig.json                     # TypeScript yapılandırma
-└── package.json                      # Proje bağımlılıkları
-```
-
-## 🚀 Kurulum
+## Kurulum
 
 ### Ön Gereksinimler
 - Node.js 18.x veya üzeri
@@ -159,7 +90,7 @@ pnpm install
 
 ### Adım 3: Environment Variables Ayarlayın
 
-`.env.local.example` dosyasını `.env.local` olarak kopyalayın:
+`.env.local`e bunları kopyalayın:
 
 ```bash
 # Firebase Configuration
@@ -192,7 +123,7 @@ npm run dev
 Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açın.
 
 
-## 💻 Geliştirme
+## Geliştirme
 
 ### Komutlar
 
@@ -210,28 +141,6 @@ npm start
 npm run lint
 ```
 
-### Kod Stili
-
-- TypeScript strict mode
-- ESLint + Prettier
-- Tailwind CSS utility-first
-- Component-based architecture
-
-### Animasyon Sistemi
-
-Tüm sayfalarda Framer Motion kullanılıyor:
-
-```tsx
-<motion.div
-  initial={{ opacity: 0, y: -30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: false, amount: 0.3 }}
-  transition={{ duration: 0.6 }}
->
-  İçerik
-</motion.div>
-```
-
 ### Admin Paneli Kullanımı
 
 1. `/giris` adresine gidin
@@ -239,7 +148,7 @@ Tüm sayfalarda Framer Motion kullanılıyor:
 3. `/admin` panelinde ürünleri yönetin
 4. Yeni ürün ekleyin veya mevcut ürünleri düzenleyin
 
-## 🎨 Renk Paleti
+## Renk Paleti
 
 ```css
 --brand-black: #0a0a0a        /* Ana arka plan */
@@ -249,41 +158,15 @@ Tüm sayfalarda Framer Motion kullanılıyor:
 --brand-gold: #d4af37         /* Vurgu rengi */
 ```
 
-## 📱 Responsive Breakpoints
-
-```css
-sm: 640px   /* Mobil (büyük) */
-md: 768px   /* Tablet */
-lg: 1024px  /* Desktop (küçük) */
-xl: 1280px  /* Desktop (büyük) */
-2xl: 1536px /* Desktop (ekstra büyük) */
-```
-
-## 🔧 Sorun Giderme
-
-### "Failed to fetch gold prices"
-- Gold API key'inizin doğru olduğundan emin olun
-- Günlük istek limitinizi kontrol edin
-- Dev server'ı yeniden başlatın
-
-### "Firebase error"
-- Firebase config'inizin doğru olduğundan emin olun
-- Firestore koleksiyonlarının oluşturulduğunu kontrol edin
-- Firebase Authentication'ın aktif olduğunu doğrulayın
-
-### "Cloudinary upload failed"
-- Upload preset'inizin unsigned olduğundan emin olun
-- Cloud name ve API key'lerinizi kontrol edin
-
-## 📄 Lisans
+## Lisans
 
 Bu proje özel bir projedir. Tüm hakları saklıdır.
 
-## 👨‍💻 Geliştirici
+## Geliştirici
 
 **Enes Yılmaz**
 
-## 🙏 Teşekkürler
+## Teşekkürler
 
 - [Next.js](https://nextjs.org/)
 - [Firebase](https://firebase.google.com/)
