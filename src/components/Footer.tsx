@@ -4,7 +4,7 @@ import { Mail, MapPin, Clock, Instagram , Phone} from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-dark-gray mt-6 sm:mt-8 lg:mt-12 xl:mt-16">
+    <footer className="bg-brand-dark-gray">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-4 sm:py-6 lg:py-8 xl:py-10 border-t-2 border-brand-gold">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 xl:gap-10">
           
