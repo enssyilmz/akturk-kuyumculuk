@@ -22,13 +22,6 @@ interface Product {
   sira?: string
 }
 
-interface GoldPrices {
-  gramAltin: {
-    buying: number
-    selling: number
-    change: number
-  }
-}
 
 export default function ProductDetailPage() {
   const params = useParams()
@@ -37,11 +30,6 @@ export default function ProductDetailPage() {
   const [loading, setLoading] = useState(true)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxImage, setLightboxImage] = useState('')
-  const [showPrice, setShowPrice] = useState(false)
-  const [calculatedPrice, setCalculatedPrice] = useState<number | null>(null)
-  const [goldPrices, setGoldPrices] = useState<GoldPrices | null>(null)
-  const [priceLoading, setPriceLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const openLightbox = (image: string) => {
     setLightboxImage(image)
@@ -52,56 +40,7 @@ export default function ProductDetailPage() {
     setLightboxOpen(false)
   }
 
-  const calculatePrice = async () => {
-    if (!product?.gram || !product?.ayar) {
-      setErrorMessage('Gram veya ayar bilgisi eksik!')
-      return
-    }
-
-    setPriceLoading(true)
-    setErrorMessage(null)
-    
-    try {
-      // Altın fiyatlarını çek
-      const response = await fetch('/api/gold-prices')
-      if (!response.ok) {
-        throw new Error('Altın fiyatları alınamadı')
-      }
-      
-      const prices: GoldPrices = await response.json()
-      setGoldPrices(prices)
-      
-      const hasFiyati = prices.gramAltin.selling // Has fiyatı (satış fiyatı)
-      const gram = parseFloat(product.gram)
-      const ayar = product.ayar
-      
-      let carpan = 0
-      
-      // Ayara göre çarpan belirleme - Admin'den "22K", "14K", "8K" geliyor
-      if (ayar === '22K' || ayar === '22') {
-        carpan = 1100
-      } else if (ayar === '14K' || ayar === '14') {
-        carpan = 835
-      } else if (ayar === '8K' || ayar === '8') {
-        carpan = 583
-      } else {
-        setErrorMessage(`Geçersiz ayar değeri: ${ayar}. Lütfen 8K, 14K veya 22K seçiniz.`)
-        setPriceLoading(false)
-        return
-      }
-      
-      // Fiyat hesaplama: (gram * carpan) / hasFiyati
-      const hesaplananFiyat = (gram * carpan) / hasFiyati
-      
-      setCalculatedPrice(hesaplananFiyat)
-      setShowPrice(true)
-    } catch (error) {
-      console.error('Fiyat hesaplama hatası:', error)
-      setErrorMessage('Fiyat hesaplanırken bir hata oluştu! Lütfen daha sonra tekrar deneyiniz.')
-    } finally {
-      setPriceLoading(false)
-    }
-  }
+  
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -140,7 +79,7 @@ export default function ProductDetailPage() {
   const images = [product.image, product.image2].filter(Boolean) as string[]
 
   return (
-    <div className="min-h-screen bg-brand-black pt-8 pt-12 lg:pt-30">
+    <div className="bg-brand-black pt-8 pt-12 lg:pt-30 pb-8 sm:pb-12 lg:pb-16">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
           <motion.div
@@ -215,36 +154,7 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
-            <div className="border-t border-brand-gold/30 pt-4 sm:pt-6">
-              <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-brand-gold mb-2 sm:mb-3">Fiyat</h2>
-              <button
-                onClick={calculatePrice}
-                disabled={priceLoading}
-                className="w-full btn-primary text-brand-black py-3 sm:py-4 px-4 sm:px-6 text-sm sm:text-base lg:text-lg disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {priceLoading ? 'Hesaplanıyor...' : 'Fiyat Hesapla'}
-              </button>
-
-              {showPrice && (
-                <div className="mt-4 bg-brand-dark-gray ring-1 ring-brand-gold overflow-hidden">
-                  <div className="px-4 sm:px-6 py-4 sm:py-6">
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-brand-light-gray text-sm sm:text-base lg:text-lg">Hesaplanan Fiyat:</span>
-                      <span className="text-brand-gold font-bold text-lg sm:text-xl lg:text-2xl">
-                        {calculatedPrice !== null ? `${calculatedPrice.toFixed(2)} TL` : '-'}
-                      </span>
-                    </div>
-                    {goldPrices && (
-                      <div className="pt-3 border-t border-brand-gold/30">
-                        <p className="text-xs sm:text-sm text-brand-light-gray">
-                          Has Altın Fiyatı: <span className="text-brand-gold font-semibold">{goldPrices.gramAltin.selling.toFixed(2)} TL</span>
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
+            
 
             {product.description && (
               <div className="border-t border-brand-gold/30 pt-4 sm:pt-6">
@@ -256,6 +166,7 @@ export default function ProductDetailPage() {
             )}
 
             <div className="border-t border-brand-gold/30 pt-4 sm:pt-6">
+              <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-brand-gold mb-3 sm:mb-4">Fiyat</h2>            
               <a
                 href="https://wa.me/905312831934"
                 target="_blank"
@@ -284,55 +195,17 @@ export default function ProductDetailPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <div className="relative w-[90vw] h-[90vh]">
-              <Image
+                        <div className="relative max-w-[90vw] max-h-[90vh] ring-2 ring-brand-gold overflow-hidden" onClick={(e) => e.stopPropagation()}>
+              <img
                 src={lightboxImage}
                 alt={product.name}
-                fill
-                className="object-contain ring-2 ring-brand-gold"
-                onClick={(e) => e.stopPropagation()}
+                className="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain block"
               />
             </div>
           </div>
         )}
 
-        {errorMessage && (
-          <div 
-            className="fixed inset-0 bg-brand-black/90 z-50 flex items-center justify-center p-4"
-            onClick={() => setErrorMessage(null)}
-          >
-            <div 
-              className="bg-brand-dark-gray ring-2 ring-brand-gold max-w-md w-full p-6 relative"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setErrorMessage(null)}
-                className="absolute top-3 right-3 text-brand-gold hover:text-brand-light-gray transition-colors"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <div className="text-center">
-                <div className="mb-4">
-                  <svg className="w-16 h-16 text-red-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-brand-gold mb-3">Hata</h3>
-                <p className="text-brand-light-gray text-sm sm:text-base mb-6">
-                  {errorMessage}
-                </p>
-                <button
-                  onClick={() => setErrorMessage(null)}
-                  className="btn-primary text-brand-black py-2 px-6 text-sm sm:text-base"
-                >
-                  Tamam
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        
       </div>
     </div>
   )
