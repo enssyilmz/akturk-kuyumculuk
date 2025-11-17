@@ -278,7 +278,7 @@ export default function NedenAkturkKuyumculuk() {
               href="tel:05312831934" 
               className="border-2 px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 btn-primary text-xs sm:text-base"
             >
-              Bizi Arayın: (0531) 283 19 34
+              Bizi Arayın: +90 531 283 19 34
             </a>
           </div>
         </motion.section>

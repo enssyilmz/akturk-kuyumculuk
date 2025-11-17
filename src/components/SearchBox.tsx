@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Search } from 'lucide-react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Product {
   id: string;
@@ -94,16 +95,23 @@ export default function SearchBox({
 
   return (
     <div ref={searchRef} className="relative flex items-center">
-      {searchOpen && (
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Ürün ara..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className={`${inputWidth} px-4 py-2 pr-10 bg-white text-black border-2 border-brand-medium-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray`}
-            autoFocus
-          />
+      <AnimatePresence>
+        {searchOpen && (
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            <input
+              type="text"
+              placeholder="Ürün ara..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={`${inputWidth} px-4 py-2 pr-10 bg-white text-black border-2 border-brand-medium-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold transition-all placeholder-brand-medium-gray`}
+              autoFocus
+            />
 
           {/* Arama Sonuçları Dropdown */}
           {searchQuery && searchResults.length > 0 && (
@@ -138,8 +146,9 @@ export default function SearchBox({
               <p className="text-brand-medium-gray text-sm text-center">Ürün bulunamadı</p>
             </div>
           )}
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
       <button
         onClick={() => setSearchOpen(!searchOpen)}
         className="p-1"

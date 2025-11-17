@@ -80,11 +80,11 @@ export default function Footer() {
                 </a>
                 <a href="tel:05312831934" className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 text-brand-light-gray hover:text-brand-gold transition-colors text-[10px] sm:text-xs lg:text-sm xl:text-base">
                   <Phone className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex-shrink-0" />
-                  <span>(0531) 283 19 34</span>
+                  <span>+90 531 283 19 34</span>
                 </a>
               <a href="tel:04623321661" className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 text-brand-light-gray hover:text-brand-gold transition-colors text-[10px] sm:text-xs lg:text-sm xl:text-base">
                 <Phone className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex-shrink-0" />
-                <span>0462 332 16 61</span>
+                <span>+90 462 332 16 61</span>
               </a>
               </div>
             </div>

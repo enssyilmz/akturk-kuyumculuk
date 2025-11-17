@@ -40,11 +40,11 @@ export default function Sidebar() {
               <div className="flex items-center space-x-2 text-xs">
                 <a href="tel:05312831934" className="flex items-center space-x-1 text-brand-light-gray hover:text-brand-gold transition-colors">
                   <Phone className="w-3 h-3" />
-                  <span>(0531) 283 19 34</span>
+                  <span>+90 531 283 19 34</span>
                 </a>
                 <a href="tel:04623321661" className="flex items-center space-x-1 text-brand-light-gray hover:text-brand-gold transition-colors">
                   <Phone className="w-3 h-3" />
-                  <span>0462 332 16 61</span>
+                  <span>+90 462 332 16 61</span>
                 </a>
               </div>
             </div>
