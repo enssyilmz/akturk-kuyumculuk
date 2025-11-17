@@ -316,7 +316,7 @@ export default function Uretim() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center bg-brand-dark-gray p-6 sm:p-8 lg:p-12 border-2 border-brand-gold"
+          className="text-center bg-brand-dark-gray p-6 sm:p-8 lg:p-12 mb-8 border-2 border-brand-gold"
         >
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif text-brand-light-gray mb-3 sm:mb-4 lg:mb-6">
             Sizin İçin Üretiyoruz

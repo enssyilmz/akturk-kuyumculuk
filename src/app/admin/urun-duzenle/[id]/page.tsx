@@ -360,7 +360,7 @@ export default function EditProduct() {
           </div>
 
           {/* Fiyat Tablosu Bilgileri */}
-            <h3 className="text-md sm:text-lg lg:text-xl xl:text-2xl font-bold text-brand-black mb-3 sm:mb-4">Fiyat Tablo Bilgileri</h3>
+            <h3 className="text-md sm:text-lg lg:text-xl xl:text-2xl font-bold text-brand-black mb-3 sm:mb-4">Tablo Bilgileri</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {/* Renk */}
               <div>
@@ -435,21 +435,6 @@ export default function EditProduct() {
                   onChange={handleInputChange}
                   className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
                   placeholder="Örn: 14K"
-                />
-              </div>
-
-              {/* Fiyat */}
-              <div className="md:col-span-2">
-                <label className="block text-xs sm:text-sm font-semibold text-brand-black mb-2">
-                  Fiyat
-                </label>
-                <input
-                  type="text"
-                  name="price"
-                  value={formData.price || ''}
-                  onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold"
-                  placeholder="Örn: 3.041.702 TL"
                 />
               </div>
             </div>
