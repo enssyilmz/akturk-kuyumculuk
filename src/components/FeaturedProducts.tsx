@@ -141,9 +141,12 @@ export default function FeaturedProducts() {
 
               {/* Ürün Bilgileri */}
               <div className="p-2 sm:p-3 lg:p-4 flex flex-col">
-                <h3 className="text-xs sm:text-sm lg:text-base font-semibold text-brand-light-gray mb-1 sm:mb-2 line-clamp-2 group-hover:text-brand-gold transition-colors">
-                  {product.name}
-                </h3>
+                {/* Başlık - Sabit yükseklik */}
+                <div className="h-10 sm:h-11 lg:h-12 mb-1 sm:mb-2">
+                  <h3 className="text-xs sm:text-sm lg:text-base font-semibold text-brand-light-gray line-clamp-2 group-hover:text-brand-gold transition-colors">
+                    {product.name}
+                  </h3>
+                </div>
 
                 {/* Açıklama - Sabit yükseklik */}
                 <div className="h-8 sm:h-9 lg:h-10">

@@ -143,7 +143,7 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-brand-dark-gray py-6 sm:py-8 lg:py-12">
-      <div className="max-w-sm sm:max-w-xl lg:max-w-4xl xl:max-w-5xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
+      <div className="max-w-sm sm:max-w-xl lg:max-w-4xl xl:max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
         {/* Başlık ve Butonlar */}
         <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
