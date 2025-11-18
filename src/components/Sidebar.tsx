@@ -14,6 +14,7 @@ export default function Sidebar() {
     { name: 'YÜZÜK VE KÜPE', href: '/urunler/yuzukvekupe' },
     { name: 'SET', href: '/urunler/set' },
     { name: 'ALTIN FİYATLARI', href: '/altin-fiyatlari' },
+    { name: 'SERTİFİKA', href: '/sertifika' },
   ];
 
   return (
