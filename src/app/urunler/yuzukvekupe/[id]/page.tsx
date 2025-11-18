@@ -21,6 +21,7 @@ interface Product {
   gram?: string
   ayar?: string
   sira?: string
+  productCode?: string
 }
 
 
@@ -124,9 +125,17 @@ export default function ProductDetailPage() {
               <h1 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-brand-gold mb-2 sm:mb-3">
                 {product.name}
               </h1>
-              <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-brand-dark-gray ring-1 ring-brand-gold">
-                <span className="text-brand-light-gray text-xs sm:text-sm lg:text-md xl:text-lg">Kategori: </span>
-                <span className="text-brand-gold font-semibold capitalize text-xs sm:text-sm lg:text-md xl:text-lg">{product.category}</span>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-brand-dark-gray ring-1 ring-brand-gold">
+                  <span className="text-brand-light-gray text-xs sm:text-sm lg:text-md xl:text-lg">Kategori: </span>
+                  <span className="text-brand-gold font-semibold capitalize text-xs sm:text-sm lg:text-md xl:text-lg">{product.category}</span>
+                </div>
+                {product.productCode && (
+                  <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-brand-dark-gray ring-1 ring-brand-gold">
+                    <span className="text-brand-light-gray text-xs sm:text-sm lg:text-md xl:text-lg">Ürün Kodu: </span>
+                    <span className="text-brand-gold font-semibold text-xs sm:text-sm lg:text-md xl:text-lg">{product.productCode}</span>
+                  </div>
+                )}
               </div>
             </div>
 
