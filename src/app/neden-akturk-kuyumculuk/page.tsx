@@ -13,7 +13,7 @@ export default function NedenAkturkKuyumculuk() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
+          className="text-center pb-8 sm:pb-12 lg:pb-16"
         >
           <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-serif text-brand-light-gray mb-2 sm:mb-3 lg:mb-4">
             Neden Aktürk Kuyumculuk?

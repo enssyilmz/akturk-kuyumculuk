@@ -71,7 +71,7 @@ export default function Uretim() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
+          className="text-center pb-8 sm:pb-12 lg:pb-16"
         >
           <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-serif text-brand-light-gray mb-2 sm:mb-3 lg:mb-4">
             Üretim Aşaması
@@ -94,7 +94,7 @@ export default function Uretim() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-12 lg:mb-16"
+          className="pb-8 sm:pb-12 lg:pb-16"
         >
           <div className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8 border border-brand-medium-gray">
             <div className="flex items-center justify-center mb-3 sm:mb-4 lg:mb-6">
@@ -121,7 +121,7 @@ export default function Uretim() {
         </motion.section>
 
         {/* Üretim Aşamaları */}
-        <section className="mb-8 sm:mb-12 lg:mb-16">
+        <section className="pb-8 sm:pb-12 lg:pb-16">
           <motion.h2
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -179,7 +179,7 @@ export default function Uretim() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-12 lg:mb-16"
+          className="pb-8 sm:pb-12 lg:pb-16"
         >
           <div className="bg-brand-dark-gray  sm: lg:rounded-2xl p-4 sm:p-6 lg:p-8 xl:p-12 border border-brand-medium-gray">
             <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-serif text-brand-light-gray text-center mb-6 sm:mb-8 lg:mb-12">
@@ -234,7 +234,7 @@ export default function Uretim() {
         </motion.section>
 
         {/* Ürün Kimliği ve Güvence */}
-        <section className="mb-8 sm:mb-12 lg:mb-16">
+        <section className="pb-8 sm:pb-12 lg:pb-16">
           <div className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -333,7 +333,7 @@ export default function Uretim() {
               Bizi Arayın
             </a>
             <Link
-              href="/urunler/bilezik"
+              href="/urunler/bileklik"
               className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 btn-primary text-xs sm:text-base"
             >
               Ürünleri İnceleyin

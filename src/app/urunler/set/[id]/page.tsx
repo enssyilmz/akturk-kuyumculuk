@@ -195,11 +195,15 @@ export default function ProductDetailPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-                        <div className="relative max-w-[90vw] max-h-[90vh] ring-2 ring-brand-gold overflow-hidden" onClick={(e) => e.stopPropagation()}>
-              <img
+            <div className="ring-2 ring-brand-gold inline-block" onClick={(e) => e.stopPropagation()}>
+              <Image
                 src={lightboxImage}
                 alt={product.name}
-                className="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain block"
+                width={0}
+                height={0}
+                sizes="90vw"
+                className="block"
+                style={{ maxWidth: '90vw', maxHeight: '90vh', width: 'auto', height: 'auto', objectFit: 'contain' }}
               />
             </div>
           </div>

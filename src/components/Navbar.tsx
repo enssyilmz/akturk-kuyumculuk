@@ -8,10 +8,8 @@ export default function Navbar() {
 
   const menuItems = [
     { name: 'BİLEKLİK', href: '/urunler/bileklik' },
-    { name: 'BİLEZİK', href: '/urunler/bilezik' },
     { name: 'KOLYE', href: '/urunler/kolye' },
-    { name: 'KÜPE', href: '/urunler/kupe' },
-    { name: 'YÜZÜK', href: '/urunler/yuzuk' },
+    { name: 'YÜZÜK VE KÜPE', href: '/urunler/yuzukvekupe' },
     { name: 'SET', href: '/urunler/set' },
     { name: 'ALTIN FİYATLARI', href: '/altin-fiyatlari' },
   ];

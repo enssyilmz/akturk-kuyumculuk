@@ -25,7 +25,7 @@ export default function AdminAddProduct() {
   const router = useRouter();
   const [formData, setFormData] = useState<ProductFormData>({
     name: '',
-    category: 'yuzuk',
+    category: 'yuzukvekupe',
   });
   const [imageUrl, setImageUrl] = useState<string>('');
   const [imageUrl2, setImageUrl2] = useState<string>('');
@@ -34,10 +34,8 @@ export default function AdminAddProduct() {
 
   const categories = [
     { label: 'Bileklik', value: 'bileklik', collection: 'bileklik' },
-    { label: 'Yüzük', value: 'yuzuk', collection: 'yuzuk' },
-    { label: 'Bilezik', value: 'bilezik', collection: 'bilezik' },
+    { label: 'Yüzük ve Küpe', value: 'yuzukvekupe', collection: 'yuzukvekupe' },
     { label: 'Kolye', value: 'kolye', collection: 'kolye' },
-    { label: 'Küpe', value: 'kupe', collection: 'kupe' },
     { label: 'Set', value: 'set', collection: 'set' },
   ];
 

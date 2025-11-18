@@ -39,10 +39,8 @@ export default function EditProduct() {
 
   const categories = [
     { label: 'Bileklik', value: 'bileklik', collection: 'bileklik' },
-    { label: 'Yüzük', value: 'yuzuk', collection: 'yuzuk' },
-    { label: 'Bilezik', value: 'bilezik', collection: 'bilezik' },
+    { label: 'Yüzük ve Küpe', value: 'yuzukvekupe', collection: 'yuzukvekupe' },
     { label: 'Kolye', value: 'kolye', collection: 'kolye' },
-    { label: 'Küpe', value: 'kupe', collection: 'kupe' },
     { label: 'Set', value: 'set', collection: 'set' },
   ];
   const renkler = [

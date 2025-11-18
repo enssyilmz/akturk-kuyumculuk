@@ -73,7 +73,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-brand-black">
-      <div className="container mx-auto px-3 sm:px-4 lg:px-8 pt-8 pt-12 lg:pt-30 ">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-8 pt-8 pt-12 lg:pt-30 pb-8 sm:pb-12 lg:pb-16">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,17 +138,20 @@ export default function Page() {
                     />
                   )}
                 </div>
-                <div className="p-2 sm:p-3 lg:p-4 xl:p-6">
-                  <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-brand-gold text-center">
-                    {product.name}
-                  </h3>
+                              <div className="p-2 sm:p-3 lg:p-4 flex flex-col">
+                <h3 className="ext-sm sm:text-base lg:text-lg xl:text-xl font-bold text-brand-gold text-center">
+                  {product.name}
+                </h3>
+
+                {/* Açıklama - Sabit yükseklik */}
+                <div className="h-8 sm:h-9 lg:h-10">
                   {product.description && (
-                    <p className="text-brand-light-gray text-center text-xs sm:text-sm lg:text-base mt-1 sm:mt-2">
+                    <p className="text-[10px] sm:text-xs lg:text-sm text-brand-light-gray line-clamp-2">
                       {product.description}
                     </p>
                   )}
-
                 </div>
+              </div>
               </Link>
               </motion.div>
             ))}

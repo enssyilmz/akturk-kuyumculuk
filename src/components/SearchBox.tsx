@@ -35,7 +35,7 @@ export default function SearchBox({
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const categories = ['bileklik', 'bilezik', 'kolye', 'kupe', 'yuzuk', 'set'];
+        const categories = ['bileklik', 'kolye', 'yuzukvekupe', 'set'];
         const products: Product[] = [];
 
         for (const category of categories) {
