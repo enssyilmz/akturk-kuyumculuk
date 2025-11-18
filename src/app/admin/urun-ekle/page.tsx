@@ -18,6 +18,7 @@ interface ProductFormData {
   gram?: string;
   ayar?: string;
   sira?: string;
+  productCode?: string;
 }
 
 export default function AdminAddProduct() {
@@ -109,6 +110,7 @@ export default function AdminAddProduct() {
         gram: formData.gram || '',
         ayar: formData.ayar || '',
         sira: formData.sira || '',
+        productCode: formData.productCode || '',
         createdAt: Timestamp.now(),
         updatedAt: Timestamp.now(),
       };
@@ -270,6 +272,24 @@ export default function AdminAddProduct() {
                 placeholder="Örn: Altın Harf Yüzük"
                 required
               />
+            </div>
+
+            {/* Ürün Kodu */}
+            <div className="md:col-span-2">
+              <label className="text-md sm:text-lg lg:text-xl xl:text-2xl font-bold text-brand-black mb-3 sm:mb-4 block">
+                Ürün Kodu (Sertifika için)
+              </label>
+              <input
+                type="text"
+                name="productCode"
+                value={formData.productCode || ''}
+                onChange={handleInputChange}
+                className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-black border-2 border-brand-light-gray focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold uppercase"
+                placeholder="Örn: AK-12345"
+              />
+              <p className="text-xs sm:text-sm text-gray-600 mt-1.5 sm:mt-2">
+                Bu kod, sertifika sayfasında ürün doğrulaması için kullanılacaktır.
+              </p>
             </div>
 
             {/* Kategori */}

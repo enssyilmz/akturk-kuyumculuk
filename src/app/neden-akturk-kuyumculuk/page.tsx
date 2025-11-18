@@ -1,9 +1,34 @@
 "use client";
 
-import { Award, Shield, Clock, Gem, Calculator, Package, Heart, Users } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Award, Shield, Clock, Gem, Calculator, Package, Heart, Users, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 export default function NedenAkturkKuyumculuk() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string>('');
+
+  // Galeri resimleri - Bu dizini kendinize göre güncelleyebilirsiniz
+  const galleryImages = [
+    '/images/gallery/1.jpg',
+    '/images/gallery/2.jpg',
+    '/images/gallery/3.jpg',
+    '/images/gallery/4.jpg',
+    '/images/gallery/5.jpg',
+    '/images/gallery/6.jpg',
+    '/images/gallery/7.jpg',
+    '/images/gallery/8.jpg',
+  ];
+
+  // Görselleri birçok kez kopyala (gerçek sonsuz döngü için)
+  const infiniteImages = Array(10).fill(galleryImages).flat();
+
+  const handleImageClick = (image: string) => {
+    setSelectedImage(image);
+    setLightboxOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-brand-black pt-8 sm:pt-12 lg:pt-30 ">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
@@ -258,6 +283,67 @@ export default function NedenAkturkKuyumculuk() {
           </div>
         </section>
 
+        {/* Galeri - Otomatik Kayan */}
+        <section className="mb-10 sm:mb-12 lg:mb-20">
+          <motion.h2
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-serif text-brand-light-gray text-center mb-6 sm:mb-8 lg:mb-12"
+          >
+            Atölyemizden Kareler
+          </motion.h2>
+          
+          <div className="relative border-y-2 border-brand-gold py-6 sm:py-8 lg:py-10">
+            {/* Kayan Galeri Container */}
+            <div className="overflow-hidden">
+              <div
+                className="flex gap-3 sm:gap-4 lg:gap-6"
+                style={{
+                  animation: 'scroll-left 40s linear infinite',
+                  width: 'fit-content',
+                }}
+              >
+                {infiniteImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative cursor-pointer flex-shrink-0 bg-brand-dark-gray overflow-hidden group hover:scale-105 transition-transform duration-300"
+                    style={{
+                      width: 'clamp(200px, 25vw, 350px)',
+                      height: 'clamp(150px, 18.75vw, 262px)',
+                    }}
+                    onClick={() => handleImageClick(image)}
+                  >
+                    <Image
+                      src={image}
+                      alt={`Galeri ${(index % galleryImages.length) + 1}`}
+                      fill
+                      className="object-cover transition-all duration-500 group-hover:brightness-75"
+                      sizes="(max-width: 640px) 200px, (max-width: 1024px) 250px, 350px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3 sm:pb-4">
+                      <span className="text-brand-gold font-semibold text-xs sm:text-sm lg:text-base">
+                        Büyütmek için tıklayın
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <style jsx>{`
+              @keyframes scroll-left {
+                0% {
+                  transform: translateX(0);
+                }
+                100% {
+                  transform: translateX(calc(-${galleryImages.length} * (clamp(200px, 25vw, 350px) + 1.5rem)));
+                }
+              }
+            `}</style>
+          </div>
+        </section>
+
         {/* Alt Bilgi */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
@@ -283,6 +369,55 @@ export default function NedenAkturkKuyumculuk() {
           </div>
         </motion.section>
       </div>
+
+      {/* Lightbox - Büyük Görsel */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 sm:p-6 lg:p-8"
+            onClick={() => setLightboxOpen(false)}
+          >
+            <button
+              onClick={() => setLightboxOpen(false)}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-brand-gold hover:text-brand-light-gray transition-colors z-10"
+            >
+              <X className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />
+            </button>
+            
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative max-w-7xl w-full h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-full max-h-[90vh] flex items-center justify-center">
+                <div className="relative inline-block ring-4 ring-brand-gold">
+                  <Image
+                    src={selectedImage}
+                    alt="Galeri Büyük Görsel"
+                    width={0}
+                    height={0}
+                    sizes="90vw"
+                    style={{
+                      width: 'auto',
+                      height: 'auto',
+                      maxWidth: '90vw',
+                      maxHeight: '85vh',
+                      objectFit: 'contain'
+                    }}
+                    className="block"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
