@@ -140,9 +140,12 @@ export default function Page() {
                   )}
                 </div>
                               <div className="p-2 sm:p-3 lg:p-4 flex flex-col">
-                <h3 className="ext-sm sm:text-base lg:text-lg xl:text-xl font-bold text-brand-gold text-center">
-                  {product.name}
-                </h3>
+                {/* Başlık - Sabit yükseklik */}
+                <div className="h-10 sm:h-11 lg:h-12 mb-1 sm:mb-2">
+                  <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-brand-gold text-center line-clamp-2">
+                    {product.name}
+                  </h3>
+                </div>
 
                 {/* Açıklama - Sabit yükseklik */}
                 <div className="h-8 sm:h-9 lg:h-10">
