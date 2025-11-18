@@ -19,11 +19,9 @@ interface Product {
 
 // Kategori koleksiyonları (module scope - stable reference)
 const CATEGORY_COLLECTIONS = [
-  { name: 'yuzuk', label: 'Yüzük' },
+  { name: 'yuzukvekupe', label: 'Yüzük ve Küpe' },
   { name: 'bileklik', label: 'Bileklik' },
-  { name: 'bilezik', label: 'Bilezik' },
   { name: 'kolye', label: 'Kolye' },
-  { name: 'kupe', label: 'Küpe' },
   { name: 'set', label: 'Set' },
 ];
 
@@ -142,17 +140,19 @@ export default function FeaturedProducts() {
                 </div>
 
               {/* Ürün Bilgileri */}
-              <div className="p-2 sm:p-3 lg:p-4">
+              <div className="p-2 sm:p-3 lg:p-4 flex flex-col">
                 <h3 className="text-xs sm:text-sm lg:text-base font-semibold text-brand-light-gray mb-1 sm:mb-2 line-clamp-2 group-hover:text-brand-gold transition-colors">
                   {product.name}
                 </h3>
 
-                {/* Açıklama */}
-                {product.description && (
-                  <p className="text-[10px] sm:text-xs lg:text-sm text-brand-medium-gray line-clamp-2">
-                    {product.description}
-                  </p>
-                )}
+                {/* Açıklama - Sabit yükseklik */}
+                <div className="h-8 sm:h-9 lg:h-10">
+                  {product.description && (
+                    <p className="text-[10px] sm:text-xs lg:text-sm text-brand-medium-gray line-clamp-2">
+                      {product.description}
+                    </p>
+                  )}
+                </div>
               </div>
               </Link>
             </motion.div>

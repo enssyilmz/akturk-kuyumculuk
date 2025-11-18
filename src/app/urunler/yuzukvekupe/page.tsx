@@ -18,7 +18,7 @@ interface Product {
   category: string
 }
 
-export default function Page() {
+export default function YuzukveKupePage() {
   const [products, setProducts] = useState<Product[]>([])
   const [sortedProducts, setSortedProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
@@ -27,7 +27,7 @@ export default function Page() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'kupe'))
+        const querySnapshot = await getDocs(collection(db, 'yuzukvekupe'))
         const productsData = querySnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
@@ -45,7 +45,7 @@ export default function Page() {
   }, [])
 
   useEffect(() => {
-    let sorted = [...products];
+  let sorted = [...products];
     
     switch (sortBy) {
       case 'name-asc':
@@ -59,7 +59,7 @@ export default function Page() {
         sorted = products;
         break;
     }
-    
+
     setSortedProducts(sorted);
   }, [sortBy, products]);
 
@@ -73,14 +73,15 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-brand-black">
-      <div className="container mx-auto px-3 sm:px-4 lg:px-8 pt-8 pt-12 lg:pt-30 ">
+      <div className="container mx-auto px-3 sm:px-4 lg:px-8 pt-8 pt-12 lg:pt-30 pb-8 sm:pb-12 lg:pb-16">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
           className="text-xl sm:text-xl lg:text-3xl xl:text-4xl font-bold text-brand-gold text-center mb-6 sm:mb-8"
-        >KÜPE</motion.h1>
+        >YÜZÜK VE KÜPE
+        </motion.h1>
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -119,8 +120,8 @@ export default function Page() {
               >
               <Link 
                 key={product.id}
-                href={`/urunler/kupe/${product.id}`}
-                className="block bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer group transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50"
+                href={`/urunler/yuzukvekupe/${product.id}`}
+                className="block bg-brand-dark-gray overflow-hidden ring-1 ring-brand-gold cursor-pointer group transition-shadow duration-300 hover:shadow-lg hover:shadow-brand-light-gray/50" 
               >
                 <div className="relative h-40 sm:h-60 lg:h-80 xl:h-100 overflow-hidden">
                   <Image
@@ -138,17 +139,20 @@ export default function Page() {
                     />
                   )}
                 </div>
-                <div className="p-2 sm:p-3 lg:p-4 xl:p-6">
-                  <h3 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-brand-gold text-center">
-                    {product.name}
-                  </h3>
+              <div className="p-2 sm:p-3 lg:p-4 flex flex-col">
+                <h3 className="ext-sm sm:text-base lg:text-lg xl:text-xl font-bold text-brand-gold text-center">
+                  {product.name}
+                </h3>
+
+                {/* Açıklama - Sabit yükseklik */}
+                <div className="h-8 sm:h-9 lg:h-10">
                   {product.description && (
-                    <p className="text-brand-light-gray text-center text-xs sm:text-sm lg:text-base mt-1 sm:mt-2">
+                    <p className="text-[10px] sm:text-xs lg:text-sm text-brand-light-gray line-clamp-2">
                       {product.description}
                     </p>
                   )}
-
                 </div>
+              </div>
               </Link>
               </motion.div>
             ))}

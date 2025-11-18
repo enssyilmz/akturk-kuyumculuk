@@ -15,13 +15,13 @@ export default function Home() {
     },
     {
       icon: Shield,
-      title: 'Güvenli Alışveriş',
-      description: 'SSL sertifikalı güvenli ödeme',
+      title: 'Güvenilir Hizmet',
+      description: 'Yıllardır güvenle hizmet veriyoruz',
     },
     {
       icon: Clock,
-      title: 'Hızlı Teslimat',
-      description: '48 saat içinde kapınızda',
+      title: 'Uzman Ekip',
+      description: 'Deneyimli ustalar ile çalışıyoruz',
     },
     {
       icon: Gem,
@@ -30,13 +30,13 @@ export default function Home() {
     },
     {
       icon: Calculator,
-      title: 'Uygun Fiyat',
-      description: 'En uygun fiyat garantisi',
+      title: 'Şeffaf Fiyatlandırma',
+      description: 'Güncel altın fiyatları ile hesaplama',
     },
     {
       icon: Package,
-      title: 'Özenli Paketleme',
-      description: 'Her ürün özel kutusunda',
+      title: 'El İşçiliği',
+      description: 'Tüm ürünler özenle hazırlanır',
     },
   ];
 

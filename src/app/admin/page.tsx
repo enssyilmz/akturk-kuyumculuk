@@ -23,11 +23,9 @@ interface Product {
 }
 
 const collections = [
-  { name: 'yuzuk', label: 'Yüzük' },
+  { name: 'yuzukvekupe', label: 'Yüzük ve Küpe' },
   { name: 'bileklik', label: 'Bileklik' },
-  { name: 'bilezik', label: 'Bilezik' },
   { name: 'kolye', label: 'Kolye' },
-  { name: 'kupe', label: 'Küpe' },
   { name: 'set', label: 'Set' },
 ];
 

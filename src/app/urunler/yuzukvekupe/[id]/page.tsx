@@ -16,6 +16,7 @@ interface Product {
   image2?: string
   category: string
   createdAt?: Timestamp
+  // Tablo alanları
   renk?: string
   gram?: string
   ayar?: string
@@ -45,15 +46,15 @@ export default function ProductDetailPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const productDoc = await getDoc(doc(db, 'bilezik', params.id as string))
+        const productDoc = await getDoc(doc(db, 'yuzukvekupe', params.id as string))
         if (productDoc.exists()) {
           const productData = { id: productDoc.id, ...productDoc.data() } as Product
           setProduct(productData)
         } else {
-          router.push('/urunler/bilezik')
+          router.push('/urunler/yuzukvekupe')
         }
       } catch {
-        router.push('/urunler/bilezik')
+        router.push('/urunler/yuzukvekupe')
       } finally {
         setLoading(false)
       }
@@ -67,7 +68,7 @@ export default function ProductDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-brand-black flex items-center justify-center">
-        <div className="text-brand-gold text-base sm:text-lg lg:text-xl xl:text-2xl">Yükleniyor...</div>
+        <div className="text-brand-gold text-base sm:text-lg lg:text-xl xl:text-2xl ">Yükleniyor...</div>
       </div>
     )
   }
@@ -92,14 +93,14 @@ export default function ProductDetailPage() {
             <div className={`grid ${images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-3 sm:gap-4`}>
               {images.map((image, index) => (
                 <motion.button
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ delay: index * 0.2, duration: 0.5 }}
-                  onClick={() => openLightbox(image)}
-                  className="relative h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] xl:h-[600px] bg-brand-dark-gray ring-1 ring-brand-gold overflow-hidden group cursor-zoom-in"
-                >
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ delay: index * 0.2, duration: 0.5 }}
+                    onClick={() => openLightbox(image)}
+                    className="relative h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] xl:h-[600px] bg-brand-dark-gray ring-1 ring-brand-gold overflow-hidden group cursor-zoom-in"
+                  >
                   <Image
                     src={image}
                     alt={`${product.name} - ${index + 1}`}
@@ -111,6 +112,7 @@ export default function ProductDetailPage() {
             </div>
           </motion.div>
 
+          {/* Ürün Bilgileri */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -128,6 +130,7 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
+            {/* Ürün Bilgileri Tablosu */}
             <div className="border-t border-brand-gold/30 pt-4 sm:pt-6">
               <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-brand-gold mb-2 sm:mb-3">Ürün Bilgileri</h2>
               <div className="bg-brand-dark-gray ring-1 ring-brand-gold overflow-hidden overflow-x-auto">
@@ -145,7 +148,9 @@ export default function ProductDetailPage() {
                     <tr>
                       <td className="px-2 sm:px-3 lg:px-4 py-2 sm:py-3 text-brand-gold">{product.category}</td>
                       <td className="px-2 sm:px-3 lg:px-4 py-2 sm:py-3 text-brand-light-gray">{product.renk || '-'}</td>
-                      <td className="px-2 sm:px-3 lg:px-4 py-2 sm:py-3 text-brand-light-gray">{product.gram ? `${product.gram}GR` : '-'}</td>
+                      <td className="px-2 sm:px-3 lg:px-4 py-2 sm:py-3 text-brand-light-gray">
+                        {product.gram ? `${product.gram}GR` : '-'}
+                      </td>
                       <td className="px-2 sm:px-3 lg:px-4 py-2 sm:py-3 text-brand-light-gray">{product.ayar || '-'}</td>
                       <td className="px-2 sm:px-3 lg:px-4 py-2 sm:py-3 text-brand-light-gray">{product.sira || '-'}</td>
                     </tr>
@@ -154,6 +159,7 @@ export default function ProductDetailPage() {
               </div>
             </div>
 
+            {/* Fiyat Bölümü */}
             
 
             {product.description && (
@@ -165,10 +171,11 @@ export default function ProductDetailPage() {
               </div>
             )}
 
+            {/* İletişim Butonu */}
             <div className="border-t border-brand-gold/30 pt-4 sm:pt-6">
-              <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-brand-gold mb-3 sm:mb-4">Fiyat</h2>            
+              <h2 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-brand-gold mb-3 sm:mb-4">Fiyat</h2>
               <a
-                href="https://wa.me/905312831934"
+                href="https://wa.me/905312831934" // WhatsApp numaranızı buraya ekleyin
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full btn-primary text-brand-black py-3 sm:py-4 px-4 sm:px-6 text-sm sm:text-base lg:text-lg"
@@ -182,6 +189,7 @@ export default function ProductDetailPage() {
           </motion.div>
         </div>
 
+        {/* Lightbox Modal */}
         {lightboxOpen && (
           <div 
             className="fixed inset-0 bg-brand-black/40 z-50 flex items-center justify-center p-3 sm:p-4"
@@ -195,11 +203,15 @@ export default function ProductDetailPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-                        <div className="relative max-w-[90vw] max-h-[90vh] ring-2 ring-brand-gold overflow-hidden" onClick={(e) => e.stopPropagation()}>
-              <img
+            <div className="ring-2 ring-brand-gold inline-block" onClick={(e) => e.stopPropagation()}>
+              <Image
                 src={lightboxImage}
                 alt={product.name}
-                className="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain block"
+                width={0}
+                height={0}
+                sizes="90vw"
+                className="block"
+                style={{ maxWidth: '90vw', maxHeight: '90vh', width: 'auto', height: 'auto', objectFit: 'contain' }}
               />
             </div>
           </div>

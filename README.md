@@ -13,13 +13,11 @@ Modern ve kullanıcı dostu kuyumculuk e-ticaret platformu. Next.js 15, TypeScri
 - Dinamik arama özelliği
 
 ### Ürün Yönetimi
-- 6 farklı ürün kategorisi:
+- 4 farklı ürün kategorisi:
   - Bileklik
-  - Bilezik
   - Kolye
-  - Küpe
   - Set
-  - Yüzük
+  - Yüzük ve Küpe
 - Ürün detay sayfaları
 - Lightbox ile resim görüntüleme
 - Ürün filtreleme ve sıralama
