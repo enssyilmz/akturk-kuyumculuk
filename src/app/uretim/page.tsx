@@ -69,7 +69,7 @@ export default function Uretim() {
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ duration: 0.6 }}
           className="text-center pb-8 sm:pb-12 lg:pb-16"
         >
@@ -79,7 +79,7 @@ export default function Uretim() {
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: "auto" }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, margin: "100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-20 sm:w-24 lg:w-32 h-0.5 sm:h-1 bg-brand-gold mx-auto mb-3 sm:mb-4 lg:mb-6"
           ></motion.div>
@@ -92,7 +92,7 @@ export default function Uretim() {
         <motion.section
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ duration: 0.6 }}
           className="pb-8 sm:pb-12 lg:pb-16"
         >
@@ -125,7 +125,7 @@ export default function Uretim() {
           <motion.h2
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, margin: "100px" }}
             transition={{ duration: 0.6 }}
             className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-serif text-brand-light-gray text-center mb-6 sm:mb-8 lg:mb-12"
           >
@@ -139,7 +139,7 @@ export default function Uretim() {
                   key={index}
                   initial={{ opacity: 0, scale: 0.8, y: 30 }}
                   whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
+                  viewport={{ once: false, margin: "100px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group relative"
                 >
@@ -177,7 +177,7 @@ export default function Uretim() {
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ duration: 0.6 }}
           className="pb-8 sm:pb-12 lg:pb-16"
         >
@@ -197,7 +197,7 @@ export default function Uretim() {
                     key={index}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: false, margin: "100px" }}
                     transition={{ duration: 0.5, delay: index * 0.15 }}
                     className="bg-brand-dark-gray p-3 sm:p-4 lg:p-6  sm: border border-brand-medium-gray"
                   >
@@ -239,7 +239,7 @@ export default function Uretim() {
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: false, margin: "100px" }}
               transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
               className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-gold"
             >
@@ -275,7 +275,7 @@ export default function Uretim() {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: false, margin: "100px" }}
               transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
               className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-gold"
             >
@@ -314,7 +314,7 @@ export default function Uretim() {
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ duration: 0.6 }}
           className="text-center bg-brand-dark-gray p-6 sm:p-8 lg:p-12 mb-8 border-2 border-brand-gold"
         >

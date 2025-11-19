@@ -77,14 +77,14 @@ export default function Page() {
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
           className="text-xl sm:text-xl lg:text-3xl xl:text-4xl font-bold text-brand-gold text-center mb-6 sm:mb-8"
         >KOLYE</motion.h1>
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ delay: 0.2, duration: 0.5 }}
           className="flex items-center justify-end mb-4 sm:mb-6 lg:mb-8"
         >          
@@ -114,7 +114,7 @@ export default function Page() {
                 key={product.id}
                 initial={{ opacity: 0, scale: 0.8, y: 30 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: false, margin: "100px" }}
                 transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 100 }}
               >
               <Link 

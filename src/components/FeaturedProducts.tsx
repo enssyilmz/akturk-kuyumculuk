@@ -91,7 +91,7 @@ export default function FeaturedProducts() {
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ duration: 0.7, type: "spring", stiffness: 80 }}
           className="text-center mb-6 sm:mb-8 lg:mb-12"
         >
@@ -114,7 +114,7 @@ export default function FeaturedProducts() {
               key={product.id}
               initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
               whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
+              viewport={{ once: false,  margin: "100px" }}
               transition={{ delay: (index % 8) * 0.1, duration: 0.6, type: "spring", stiffness: 100 }}
             >
               <Link
