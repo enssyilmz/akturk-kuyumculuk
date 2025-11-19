@@ -163,17 +163,6 @@ Bu proje özel bir projedir. Tüm hakları saklıdır.
 ## Geliştirici
 
 **Enes Yılmaz**
-
-## Teşekkürler
-
-- [Next.js](https://nextjs.org/)
-- [Firebase](https://firebase.google.com/)
-- [Cloudinary](https://cloudinary.com/)
-- [GoldAPI.io](https://www.goldapi.io/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Leaflet](https://leafletjs.com/)
-
 ---
 
 **Not:** Bu proje aktif geliştirme aşamasındadır. Önerileriniz ve katkılarınız için lütfen issue açın.
