@@ -12,7 +12,7 @@ export default function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, margin: "100px" }}
             transition={{ delay: 0.1, duration: 0.6 }}
             className="space-y-2 sm:space-y-3"
           >
@@ -39,7 +39,7 @@ export default function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, margin: "100px" }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="space-y-2 sm:space-y-3"
           >
@@ -64,7 +64,7 @@ export default function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, margin: "100px" }}
             transition={{ delay: 0.3, duration: 0.6 }}
             className="space-y-3 sm:space-y-4 lg:space-y-5"
           >

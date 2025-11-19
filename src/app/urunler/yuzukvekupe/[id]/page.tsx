@@ -87,7 +87,7 @@ export default function ProductDetailPage() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, margin: "100px" }}
             transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
             className="space-y-3 sm:space-y-4"
           >
@@ -97,7 +97,7 @@ export default function ProductDetailPage() {
                     key={index}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: false, margin: "100px" }}
                     transition={{ delay: index * 0.2, duration: 0.5 }}
                     onClick={() => openLightbox(image)}
                     className="relative h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] xl:h-[600px] bg-brand-dark-gray ring-1 ring-brand-gold overflow-hidden group cursor-zoom-in"
@@ -117,7 +117,7 @@ export default function ProductDetailPage() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, margin: "100px" }}
             transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
             className="space-y-4 sm:space-y-6"
           >

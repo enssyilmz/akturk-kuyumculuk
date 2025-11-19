@@ -49,7 +49,7 @@ export default function Home() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: false, amount: 0.05, margin: "100px" }}
         transition={{ duration: 0.6 }}
         className="max-w-8xl mx-auto px-4 sm:px-8 lg:px-14 py-4 sm:py-8 lg:py-14"
       >
@@ -59,7 +59,7 @@ export default function Home() {
               key={feature.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: false, amount: 0.05, margin: "100px" }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="flex flex-col items-center text-center"
             >

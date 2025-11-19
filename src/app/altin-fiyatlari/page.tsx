@@ -107,7 +107,7 @@ export default function AltinFiyatlari() {
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ duration: 0.6, type: "spring", stiffness: 80 }}
           className="text-xl sm:text-xl lg:text-3xl xl:text-4xl font-bold text-brand-gold text-center mb-6 sm:mb-8"
         >
@@ -118,7 +118,7 @@ export default function AltinFiyatlari() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ duration: 0.6 }}
           className="mb-8 sm:mb-12"
         >
@@ -329,7 +329,7 @@ export default function AltinFiyatlari() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, margin: "100px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-6 bg-brand-gold/10 border border-brand-gold/30 p-4 rounded"
         >
