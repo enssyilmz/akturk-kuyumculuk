@@ -3,11 +3,16 @@
 import { Award, Shield, Clock, Gem, Calculator, Package, Heart, Users, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 export default function NedenAkturkKuyumculuk() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string>('');
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Galeri resimleri - Bu dizini kendinize göre güncelleyebilirsiniz
   const galleryImages = [
@@ -25,8 +30,35 @@ export default function NedenAkturkKuyumculuk() {
   const infiniteImages = Array(10).fill(galleryImages).flat();
 
   const handleImageClick = (image: string) => {
-    setSelectedImage(image);
-    setLightboxOpen(true);
+    if (!isDragging) {
+      setSelectedImage(image);
+      setLightboxOpen(true);
+    }
+  };
+
+  // Mouse/Touch drag handlers
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsPaused(true);
+    setIsDragging(true);
+    const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
+    setStartX(pageX - (scrollContainerRef.current?.offsetLeft || 0));
+    setScrollLeft(scrollContainerRef.current?.scrollLeft || 0);
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
+    const x = pageX - (scrollContainerRef.current?.offsetLeft || 0);
+    const walk = (x - startX) * 2;
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    }
+  };
+
+  const handleDragEnd = () => {
+    setIsPaused(false);
+    setTimeout(() => setIsDragging(false), 100);
   };
 
   return (
@@ -165,7 +197,7 @@ export default function NedenAkturkKuyumculuk() {
               initial={{ opacity: 0, scale: 0.8, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: false, margin: "100px" }}
-              transition={{ duration: 0.5, delay: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
             >
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
@@ -186,7 +218,7 @@ export default function NedenAkturkKuyumculuk() {
               initial={{ opacity: 0, scale: 0.8, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: false, margin: "100px" }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
             >
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
@@ -226,7 +258,7 @@ export default function NedenAkturkKuyumculuk() {
               initial={{ opacity: 0, scale: 0.8, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: false, margin: "100px" }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
             >
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
@@ -246,7 +278,7 @@ export default function NedenAkturkKuyumculuk() {
               initial={{ opacity: 0, scale: 0.8, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: false, margin: "100px" }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
             >
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
@@ -266,7 +298,7 @@ export default function NedenAkturkKuyumculuk() {
               initial={{ opacity: 0, scale: 0.8, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: false, margin: "100px" }}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group"
             >
               <div className="flex justify-center mb-3 sm:mb-4 lg:mb-6">
@@ -297,21 +329,36 @@ export default function NedenAkturkKuyumculuk() {
           
           <div className="relative border-y-2 border-brand-gold py-6 sm:py-8 lg:py-10">
             {/* Kayan Galeri Container */}
-            <div className="overflow-hidden">
+            <div 
+              ref={scrollContainerRef}
+              className="overflow-x-auto overflow-y-hidden scrollbar-hide cursor-grab active:cursor-grabbing"
+              onMouseDown={handleDragStart}
+              onMouseMove={handleDragMove}
+              onMouseUp={handleDragEnd}
+              onMouseLeave={handleDragEnd}
+              onTouchStart={handleDragStart}
+              onTouchMove={handleDragMove}
+              onTouchEnd={handleDragEnd}
+              style={{
+                userSelect: 'none',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
               <div
                 className="flex gap-3 sm:gap-4 lg:gap-6"
                 style={{
-                  animation: 'scroll-left 40s linear infinite',
+                  animation: isPaused ? 'none' : 'scroll-left 40s linear infinite',
                   width: 'fit-content',
                 }}
               >
                 {infiniteImages.map((image, index) => (
                   <div
                     key={index}
-                    className="relative cursor-pointer flex-shrink-0 bg-brand-dark-gray overflow-hidden group hover:scale-105 transition-transform duration-300"
+                    className="relative cursor-pointer flex-shrink-0 bg-brand-dark-gray ring-2 ring-brand-gold overflow-hidden group hover:scale-105 transition-transform duration-300 select-none"
                     style={{
                       width: 'clamp(200px, 25vw, 350px)',
                       height: 'clamp(150px, 18.75vw, 262px)',
+                      pointerEvents: isDragging ? 'none' : 'auto',
                     }}
                     onClick={() => handleImageClick(image)}
                   >
@@ -321,6 +368,7 @@ export default function NedenAkturkKuyumculuk() {
                       fill
                       className="object-cover transition-all duration-500 group-hover:brightness-75"
                       sizes="(max-width: 640px) 200px, (max-width: 1024px) 250px, 350px"
+                      draggable={false}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3 sm:pb-4">
                       <span className="text-brand-gold font-semibold text-xs sm:text-sm lg:text-base">
