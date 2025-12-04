@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, CheckCircle, XCircle, QrCode, ShieldCheck } from 'lucide-react';
 import { collection, query, where, getDocs } from 'firebase/firestore';

@@ -139,8 +139,8 @@ export default function Uretim() {
                   key={index}
                   initial={{ opacity: 0, scale: 0.8, y: 30 }}
                   whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: false, margin: "100px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: false, amount: 0.05, margin: "100px" }}
+                  transition={{ duration: 0.5 }}
                   className="bg-brand-dark-gray p-4 sm:p-6 lg:p-8  sm: border border-brand-medium-gray hover:border-brand-gold transition-all duration-300 group relative"
                 >
                   {/* Numara Badge */}
@@ -198,7 +198,7 @@ export default function Uretim() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "100px" }}
-                    transition={{ duration: 0.5, delay: index * 0.15 }}
+                    transition={{ duration: 0.5 }}
                     className="bg-brand-dark-gray p-3 sm:p-4 lg:p-6  sm: border border-brand-medium-gray"
                   >
                     <div className="flex justify-center mb-2 sm:mb-3 lg:mb-4">

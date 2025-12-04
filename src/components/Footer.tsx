@@ -13,7 +13,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "100px" }}
-            transition={{ delay: 0.1, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
             className="space-y-2 sm:space-y-3"
           >
             <h3 className="text-sm sm:text-md lg:text-xl xl:text-2xl font-bold text-brand-gold mb-2 sm:mb-3 lg:mb-4">Konumumuz</h3>
@@ -65,7 +65,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "100px" }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
             className="space-y-3 sm:space-y-4 lg:space-y-5"
           >
             <div>

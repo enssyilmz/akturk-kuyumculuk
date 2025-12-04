@@ -219,3 +219,13 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* Scrollbar gizleme - Galeri için */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

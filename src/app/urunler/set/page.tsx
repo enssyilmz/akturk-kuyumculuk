@@ -110,13 +110,13 @@ export default function Page() {
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-            {sortedProducts.map((product, index) => (
+            {sortedProducts.map((product) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, scale: 0.8, y: 30 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: false, margin: "100px" }}
-                transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 100 }}
+                transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
               >
               <Link 
                 key={product.id}
